@@ -10,6 +10,26 @@ import {
 } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Rating } from "@/components/layouts/landing/rating"
+
+const avatars = [
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 1", 
+    fallback: "A1" 
+  },
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 2", 
+    fallback: "A2" 
+  },
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 3", 
+    fallback: "A3" 
+  }
+]
+
 export const Cta = ({
   className,
   signUp,
@@ -50,6 +70,7 @@ export const Cta = ({
               Sign up for free
             </Button>
           </div>
+
         </CardFooter>
       </Card>
     </section>

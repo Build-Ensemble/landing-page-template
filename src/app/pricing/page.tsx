@@ -1,3 +1,6 @@
+'use client';
+
+import { Navbar } from "@/components/layouts/landing/Navbar";
 import { PricingCard } from "@/components/layouts/landing/PricingCard";
 import { Building } from "lucide-react";
 
@@ -53,6 +56,11 @@ const Pricing = () => {
   ];
 
   return (
+    <>
+       <Navbar
+            className="backdrop-blur-md fixed top-0 left-0 right-0 z-50 max-w-screen-xl mx-auto"
+            hideAll={false}
+          />
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       <div className="max-w-7xl mx-auto px-4 py-20">
         <div className="text-center mb-16">
@@ -76,6 +84,7 @@ const Pricing = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,81 +1,79 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-interface FAQProps {
+interface FAQItem {
   question: string;
   answer: string;
-  value: string;
 }
 
-const FAQList: FAQProps[] = [
-  {
-    question: 'Is this template free?',
-    answer: 'Yes. It is a free ChadcnUI template.',
-    value: 'item-1',
-  },
-  {
-    question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.',
-    value: 'item-2',
-  },
-  {
-    question:
-      'Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?',
-    answer:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?',
-    value: 'item-3',
-  },
-  {
-    question: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit?',
-    answer: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-    value: 'item-4',
-  },
-  {
-    question:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.',
-    value: 'item-5',
-  },
-];
+interface FAQProps {
+  items: FAQItem[];
+  className?: string;
+}
 
-export const FAQ = () => {
+export function FAQ({ items, className }: FAQProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section id="faq" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Frequently Asked{' '}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
-        </span>
-      </h2>
-
-      <Accordion type="single" collapsible className="w-full AccordionRoot">
-        {FAQList.map(({ question, answer, value }: FAQProps) => (
-          <AccordionItem key={value} value={value}>
-            <AccordionTrigger className="text-left">
-              {question}
-            </AccordionTrigger>
-
-            <AccordionContent>{answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-
-      <h3 className="font-medium mt-4">
-        Still have questions?{' '}
-        <a
-          rel="noreferrer noopener"
-          href="#"
-          className="text-primary transition-all border-primary hover:border-b-2"
-        >
-          Contact us
-        </a>
-      </h3>
-    </section>
+    <div className="bg-gradient-to-br from-white to-purple-50 pt-16">
+      <div className="container mx-auto px-4 py-8 md:py-16">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          {/* Left side - Header section */}
+          <div className="w-full md:w-3/5 mb-8 md:mb-0 text-center md:text-left">
+            <h1 className="mb-4 text-3xl md:text-4xl font-bold text-gray-900">
+              Frequently Asked Questions
+            </h1>
+            <h2 className="text-lg text-gray-600">
+              Have questions? We're here to help. <br className="hidden md:block" />
+              You can email us at ensemble@outlook.com or try our live chat. We are here to assist you.
+            </h2>
+          </div>
+          
+          {/* Right side - FAQ items */}
+          <div className="w-full md:w-2/5">
+            <div className={cn("w-full", className)}>
+              <div className="space-y-4">
+                {items.map((item, index) => (
+                  <div
+                    key={index}
+                    className="group rounded-lg border border-purple-100 bg-white shadow-sm transition-all duration-200 hover:shadow-md"
+                  >
+                    <button
+                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                      className="flex w-full items-center justify-between p-4 text-left"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#9b87f5]">
+                        {item.question}
+                      </h3>
+                      <ChevronDown
+                        className={cn(
+                          "h-5 w-5 text-[#9b87f5] transition-transform duration-200",
+                          openIndex === index ? "rotate-180" : ""
+                        )}
+                      />
+                    </button>
+                    <div
+                      className={cn(
+                        "grid transition-all duration-200",
+                        openIndex === index
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      )}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="bg-gradient-to-r from-purple-50 to-white p-4 text-gray-600">
+                          {item.answer}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}

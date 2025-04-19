@@ -11,6 +11,25 @@ import {
 import '@/app/globals.css';
 import { MovingBorderButton } from '@/components/ui/moving-border';
 import { toast } from 'sonner';
+import { Rating } from "@/components/layouts/landing/rating"
+
+const avatars = [
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 1", 
+    fallback: "A1" 
+  },
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 2", 
+    fallback: "A2" 
+  },
+  { 
+    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
+    alt: "Avatar 3", 
+    fallback: "A3" 
+  }
+]
 
 const HeroSection = ({
   signUp,
@@ -63,7 +82,10 @@ const HeroSection = ({
                 <BadgeCheck className="mr-2" size={24} strokeWidth={3} />{' '}
                 <p>Get a FREE consultation</p>
               </Button>
+              <Rating avatars={avatars} />
+
             </div>
+
             <div className="flex flex-col md:flex-row gap-6">
               <div className="flex items-center">
                 <CheckCircle className="h-5 w-5 text-secondary mr-2" />

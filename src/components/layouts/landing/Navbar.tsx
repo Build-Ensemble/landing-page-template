@@ -13,12 +13,22 @@ const routeList: RouteProps[] = [
     href: '/#features',
     label: 'Features',
   },
+  {
+    href: '/#faq',
+    label: 'FAQ',
+  },
+  {
+    href: '/pricing',
+    label: 'Pricing',
+  }
+  
 ];
 
 export const Navbar = ({
   className,
   login,
   signUp,
+  pricing,
   getDemo,
   clientPortal,
   hideAll = false,
@@ -27,10 +37,21 @@ export const Navbar = ({
   login?: () => void;
   signUp?: () => void;
   getDemo?: () => void;
+  pricing?: () => void; 
   clientPortal?: () => void;
   hideAll: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const handleNavigation = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith('/#')) {
+      document
+        .getElementById(href.substring(2))
+        ?.scrollIntoView({ behavior: 'smooth' });
+    } else if (href === '/pricing' && pricing) {
+      pricing();
+    }
+  };
 
   return (
     <div
@@ -52,11 +73,8 @@ export const Navbar = ({
                 <li key={route.label}>
                   <a
                     className="hover:underline text-sm"
-                    onClick={() =>
-                      document
-                        .getElementById(route.href.substring(2))
-                        ?.scrollIntoView({ behavior: 'smooth' })
-                    }
+                    onClick={() => handleNavigation(route.href)} 
+
                   >
                     {route.label}
                   </a>
@@ -129,6 +147,8 @@ export const Navbar = ({
                   }}
                 >
                   <a href="/#features">Features</a>
+                  <a href="/#faq">FAQ</a>
+
                 </Button>
                 <Button variant="outline" onClick={login}>
                   Log in
