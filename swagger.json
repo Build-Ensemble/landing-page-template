@@ -1,0 +1,4034 @@
+{
+  "openapi": "3.0.0",
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {
+      "DocumentStatus": {
+        "enum": ["uploaded", "processing", "processed", "validated", "Failed"],
+        "type": "string"
+      },
+      "DocumentType": {
+        "enum": ["Statement", "Tax Document", "Receipt", "Proof Document"],
+        "type": "string"
+      },
+      "DocumentDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          }
+        },
+        "required": [
+          "_id",
+          "fileName",
+          "mimeType",
+          "uploadDate",
+          "uploader",
+          "status",
+          "documentType"
+        ],
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "ErrorResponse": {
+        "properties": {
+          "status": {
+            "type": "number",
+            "format": "double"
+          },
+          "message": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": ["status", "message"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_DocumentDTO_": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "AmountType": {
+        "enum": ["debit", "credit"],
+        "type": "string"
+      },
+      "BalanceAccountDTO": {
+        "properties": {
+          "code": {
+            "type": "number",
+            "format": "double"
+          },
+          "category": {
+            "type": "string"
+          },
+          "subCategory": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AmountType"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": ["code", "category", "subCategory", "type", "amount"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "TrialBalanceDTO": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "accounts": {
+            "items": {
+              "$ref": "#/components/schemas/BalanceAccountDTO"
+            },
+            "type": "array"
+          },
+          "period": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "accounts", "period"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_TrialBalanceDTO_": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "accounts": {
+            "items": {
+              "$ref": "#/components/schemas/BalanceAccountDTO"
+            },
+            "type": "array"
+          },
+          "period": {
+            "type": "string"
+          },
+          "projectId": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "TaxDocumentType": {
+        "enum": [
+          "T3 - Statement of Trust Income Allocations and Designations",
+          "T4 - Statement of Employment Income",
+          "T4A - Statement of Pension, Retirement, Annuity, and Other Income",
+          "T4A(P) - Statement of CPP/QPP Benefits",
+          "T4A(OAS) - Statement of Old Age Security",
+          "T4E - Statement of Employment Insurance and Other Benefits",
+          "T4RSP - Statement of RRSP Income",
+          "T4RIF - Statement of Income from a Registered Retirement Income Fund",
+          "T5 - Statement of Investment Income",
+          "T4PS - Statement of Employee Profit-Sharing Plan Allocations and Payments",
+          "T5007 - Statement of Benefits (e.g., social assistance, CNESST)",
+          "Other Income Slips (miscellaneous)",
+          "Foreign Income Documents (with proof of taxes paid)",
+          "RL-1 - Employment and Other Income Slip",
+          "RL-2 - Retirement and Annuity Income Slip",
+          "RL-3 - Investment Income Slip",
+          "RL-5 - Statement of Social Assistance/Indemnities",
+          "RL-6 - Statement of EI--RQAP Benefits",
+          "RL-8 - Tuition or Education Certificate",
+          "RL-10 - RRSP with FTQ or CSN (Quebec-specific)",
+          "RL-15 - Partnership Income (Quebec-specific)",
+          "RL-16 - Trust and Partnership Income (Quebec-specific)",
+          "RL-18 - Securities Transactions (Quebec-specific)",
+          "RL-19 - Advance Payments (Quebec-specific)",
+          "RL-22 - Specialized Training or Examination Fees (Quebec-specific)",
+          "RL-24 - Childcare Expenses (Quebec-specific)",
+          "RL-25 - Employee Profit-Sharing (Quebec-specific)",
+          "RL-31 - Information About Occupancy of a Dwelling (Quebec-specific)",
+          "RL-32 - CELIAPP--T4FHSA (Quebec-specific)",
+          "TP-64.3 - General Employment Conditions (Quebec)",
+          "RRSP Contribution Slip",
+          "T4FHSA - Tax-Free First Home Savings Account Slip",
+          "TFSA Statement",
+          "T5008 - Statement of Securities Transactions",
+          "T5013 - Statement of Partnership Income",
+          "T2202 - Tuition and Enrolment Certificate",
+          "T4A (Scholarship, Bursary)",
+          "Education Credit Receipt",
+          "Student Loan Interest Receipt",
+          "Professional Training Receipt",
+          "Continuing Education Receipt",
+          "T776 - Rental Income Statement",
+          "Home Buyers' Plan (HBP) Statement",
+          "Property Tax or Rent Receipt",
+          "Real Estate Purchase/Sale Documents (notary, adjustments, etc.)",
+          "Charitable Donation Receipt",
+          "Medical Expense Receipt",
+          "Childcare Receipt",
+          "T2200 - Declaration of Conditions of Employment",
+          "T2201 - Disability Tax Credit Certificate",
+          "Children’s Fitness or Arts Program Receipt",
+          "Home Care--In-Home Support Expenses",
+          "RC210 - Advance Canada Workers Benefit (ACWB)",
+          "T2125 - Statement of Business or Professional Activities",
+          "T101 - Statement of Resource Expenses",
+          "Tax Installment Statement",
+          "T2 - Federal Corporate Income Tax Return",
+          "CO-17 - Quebec Corporate Income Tax Return",
+          "Corporate Financial Statements",
+          "Articles of Incorporation and Other Corporate Documents",
+          "CRA Notice of Assessment (Corporate)",
+          "Revenu Québec Notice of Assessment (Corporate)",
+          "Corporate Payroll Documents (T4, RL-1, Summaries)",
+          "GST/HST & QST Returns/Statements",
+          "Other"
+        ],
+        "type": "string"
+      },
+      "Province": {
+        "enum": [
+          "AB",
+          "BC",
+          "MB",
+          "NB",
+          "NL",
+          "NT",
+          "NS",
+          "NU",
+          "ON",
+          "PE",
+          "QC",
+          "SK",
+          "YT"
+        ],
+        "type": "string"
+      },
+      "TaxDocumentDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "period": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taxDocumentType": {
+            "$ref": "#/components/schemas/TaxDocumentType"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/Province"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "_id",
+          "fileName",
+          "mimeType",
+          "uploadDate",
+          "uploader",
+          "status",
+          "documentType",
+          "period",
+          "taxDocumentType"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_TaxDocumentDTO_": {
+        "properties": {
+          "period": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taxDocumentType": {
+            "$ref": "#/components/schemas/TaxDocumentType"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/Province"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "Record_string.string-Array_": {
+        "properties": {},
+        "type": "object",
+        "description": "Construct a type with a set of properties K of type T"
+      },
+      "Record_number.Record_string.boolean__": {
+        "properties": {},
+        "type": "object",
+        "description": "Construct a type with a set of properties K of type T"
+      },
+      "StatementType": {
+        "enum": ["BANK", "CREDIT_CARD"],
+        "type": "string"
+      },
+      "TransactionDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "transactionDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "transactionDetails": {
+            "type": "string"
+          },
+          "categoryNumber": {
+            "type": "number",
+            "format": "double"
+          },
+          "categoryDescription": {
+            "type": "string"
+          },
+          "bbox": {
+            "items": {
+              "type": "number",
+              "format": "double"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["amount", "transactionDate", "transactionDetails"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "StatementDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "accountName": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "openingBalance": {
+            "type": "number",
+            "format": "double"
+          },
+          "closingBalance": {
+            "type": "number",
+            "format": "double"
+          },
+          "statementType": {
+            "$ref": "#/components/schemas/StatementType"
+          },
+          "bankingInstitution": {
+            "type": "string"
+          },
+          "transactions": {
+            "items": {
+              "$ref": "#/components/schemas/TransactionDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "_id",
+          "fileName",
+          "mimeType",
+          "uploadDate",
+          "uploader",
+          "status",
+          "documentType",
+          "period",
+          "bankingInstitution",
+          "transactions"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_StatementDTO_": {
+        "properties": {
+          "accountName": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "openingBalance": {
+            "type": "number",
+            "format": "double"
+          },
+          "closingBalance": {
+            "type": "number",
+            "format": "double"
+          },
+          "statementType": {
+            "$ref": "#/components/schemas/StatementType"
+          },
+          "bankingInstitution": {
+            "type": "string"
+          },
+          "transactions": {
+            "items": {
+              "$ref": "#/components/schemas/TransactionDTO"
+            },
+            "type": "array"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "ExportedExcelResponse": {
+        "properties": {
+          "link": {
+            "type": "string"
+          }
+        },
+        "required": ["link"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "StatementFormat": {
+        "enum": ["EXCEL", "QBO", "XERO"],
+        "type": "string"
+      },
+      "ProofDocumentType": {
+        "enum": ["RECEIPT", "INVOICE", "CREDIT_MEMO", "OTHER"],
+        "type": "string"
+      },
+      "ItemDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "item": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "provinceTaxRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "provinceTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "federalTaxRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "federalTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalTaxRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "item",
+          "description",
+          "quantity",
+          "rate",
+          "discountRate",
+          "provinceTaxRate",
+          "provinceTaxAmount",
+          "federalTaxRate",
+          "federalTaxAmount",
+          "totalTaxRate",
+          "totalTaxAmount",
+          "amount"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProofDocumentDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "proofDocumentType": {
+            "$ref": "#/components/schemas/ProofDocumentType"
+          },
+          "identificationNumber": {
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "customer": {
+            "type": "string"
+          },
+          "supplier": {
+            "type": "string"
+          },
+          "subtotalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "shippingAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "miscellaneousAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "taxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "federalTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "provincialTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "location": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ItemDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "_id",
+          "fileName",
+          "mimeType",
+          "uploadDate",
+          "uploader",
+          "status",
+          "documentType",
+          "proofDocumentType",
+          "items"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_ProofDocumentDTO_": {
+        "properties": {
+          "proofDocumentType": {
+            "$ref": "#/components/schemas/ProofDocumentType"
+          },
+          "identificationNumber": {
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "customer": {
+            "type": "string"
+          },
+          "supplier": {
+            "type": "string"
+          },
+          "subtotalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "shippingAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "miscellaneousAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "taxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "federalTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "provincialTaxAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "location": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ItemDTO"
+            },
+            "type": "array"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "uploadDate": {
+            "type": "string"
+          },
+          "uploader": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DocumentStatus"
+          },
+          "numberOfPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberOfProcessedPages": {
+            "type": "number",
+            "format": "double"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/DocumentType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "ExportedZipResponse": {
+        "properties": {
+          "link": {
+            "type": "string"
+          }
+        },
+        "required": ["link"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProofDocumentFormat": {
+        "enum": ["EXCEL", "QBO", "XERO"],
+        "type": "string"
+      },
+      "ProofDocumentExportLayout": {
+        "enum": ["DOCUMENT_PER_ROW", "LINE_ITEM_PER_ROW"],
+        "type": "string"
+      },
+      "ProjectDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          },
+          "documents": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DocumentDTO"
+                },
+                {
+                  "$ref": "#/components/schemas/TaxDocumentDTO"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "assignedUsers": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "projectType": {
+            "$ref": "#/components/schemas/ProjectType"
+          }
+        },
+        "required": [
+          "_id",
+          "name",
+          "documents",
+          "assignedUsers",
+          "isDefault",
+          "projectType"
+        ],
+        "type": "object",
+        "additionalProperties": {}
+      },
+      "AccountRole": {
+        "enum": ["admin", "user"],
+        "type": "string"
+      },
+      "AccountDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectDTO"
+            },
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          }
+        },
+        "required": ["_id", "email", "projects", "name", "role"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ProjectType": {
+        "enum": ["Tax Return", "Trial Balance", "Other"],
+        "type": "string"
+      },
+      "TaxProjectType": {
+        "enum": ["Personal", "Corporate", "Other"],
+        "type": "string"
+      },
+      "TaxProjectDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          },
+          "documents": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentDTO"
+            },
+            "type": "array"
+          },
+          "assignedUsers": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "projectType": {
+            "$ref": "#/components/schemas/ProjectType"
+          },
+          "taxProjectType": {
+            "$ref": "#/components/schemas/TaxProjectType"
+          },
+          "requiredTaxDocuments": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentType"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "_id",
+          "name",
+          "documents",
+          "assignedUsers",
+          "isDefault",
+          "projectType",
+          "taxProjectType",
+          "requiredTaxDocuments"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Language": {
+        "enum": ["en", "fr"],
+        "type": "string"
+      },
+      "TaxPersonalProjectDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          },
+          "documents": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentDTO"
+            },
+            "type": "array"
+          },
+          "assignedUsers": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "projectType": {
+            "$ref": "#/components/schemas/ProjectType"
+          },
+          "taxProjectType": {
+            "$ref": "#/components/schemas/TaxProjectType"
+          },
+          "requiredTaxDocuments": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentType"
+            },
+            "type": "array"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language"
+          },
+          "isHomeowner": {
+            "type": "boolean"
+          },
+          "sin": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "municipalTaxNumber": {
+            "type": "string"
+          },
+          "dependents": {
+            "items": {
+              "properties": {
+                "relationship": {
+                  "type": "string"
+                },
+                "isDisabled": {
+                  "type": "boolean"
+                },
+                "sin": {
+                  "type": "string"
+                },
+                "dateOfBirth": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "firstName": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "insuranceCoverages": {
+            "items": {
+              "properties": {
+                "monthsCovered": {
+                  "type": "number",
+                  "format": "double"
+                },
+                "endDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "startDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "policyNumber": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "rentalProperties": {
+            "items": {
+              "properties": {
+                "transactionDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "transactionType": {
+                  "type": "string"
+                },
+                "propertyTransaction": {
+                  "type": "boolean"
+                },
+                "coOwners": {
+                  "items": {
+                    "properties": {
+                      "ownershipPercentage": {
+                        "type": "number",
+                        "format": "double"
+                      },
+                      "sin": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "expenses": {
+                  "properties": {
+                    "otherExpenses": {
+                      "items": {
+                        "properties": {
+                          "amount": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "management": {
+                      "type": "number",
+                      "format": "double"
+                    }
+                  },
+                  "type": "object"
+                },
+                "totalRentCollected": {
+                  "type": "number",
+                  "format": "double"
+                },
+                "personalUsePercentage": {
+                  "type": "number",
+                  "format": "double"
+                },
+                "units": {
+                  "type": "number",
+                  "format": "double"
+                },
+                "address": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "completedTabs": {
+            "properties": {
+              "income": {
+                "type": "boolean"
+              },
+              "documents": {
+                "type": "boolean"
+              },
+              "insurance": {
+                "type": "boolean"
+              },
+              "personal": {
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "_id",
+          "name",
+          "documents",
+          "assignedUsers",
+          "isDefault",
+          "projectType",
+          "taxProjectType",
+          "requiredTaxDocuments",
+          "firstName",
+          "lastName"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_ProjectDTO_": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          },
+          "documents": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DocumentDTO"
+                },
+                {
+                  "$ref": "#/components/schemas/TaxDocumentDTO"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "assignedUsers": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "projectType": {
+            "$ref": "#/components/schemas/ProjectType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "Partial_TaxProjectDTO_": {
+        "properties": {
+          "taxProjectType": {
+            "$ref": "#/components/schemas/TaxProjectType"
+          },
+          "requiredTaxDocuments": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentType"
+            },
+            "type": "array"
+          },
+          "documents": {
+            "items": {
+              "$ref": "#/components/schemas/TaxDocumentDTO"
+            },
+            "type": "array"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clientEmail": {
+            "type": "string"
+          },
+          "assignedUsers": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "projectType": {
+            "$ref": "#/components/schemas/ProjectType"
+          }
+        },
+        "additionalProperties": {},
+        "type": "object",
+        "description": "Make all properties in T optional"
+      },
+      "OrganizationSettingsDTO": {
+        "properties": {
+          "enableTaxCategories": {
+            "type": "boolean"
+          }
+        },
+        "required": ["enableTaxCategories"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "BusinessOrganizationDTO": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "accounts": {
+            "items": {
+              "$ref": "#/components/schemas/AccountDTO"
+            },
+            "type": "array"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectDTO"
+            },
+            "type": "array"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/OrganizationSettingsDTO"
+          }
+        },
+        "required": ["_id", "name", "accounts", "projects", "settings"],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Partial_AccountDTO_": {
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "projects": {
+            "items": {
+              "$ref": "#/components/schemas/ProjectDTO"
+            },
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/AccountRole"
+          }
+        },
+        "type": "object",
+        "description": "Make all properties in T optional"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "in": "header",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "info": {
+    "title": "ensembleai",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "contact": {}
+  },
+  "paths": {
+    "/documents": {
+      "get": {
+        "operationId": "GetDocumentById",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Document"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/documents/uploadFile": {
+      "post": {
+        "operationId": "UploadFile",
+        "responses": {
+          "200": {
+            "description": "Files uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "$ref": "#/components/schemas/DocumentDTO"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No file uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error processing file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload a file to S3 and create document in DB",
+        "tags": ["Document"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "File to be uploaded."
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "pagesToCut": {
+                    "type": "string"
+                  },
+                  "documentType": {
+                    "type": "string"
+                  }
+                },
+                "required": ["file", "projectId"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents/uploadFiles": {
+      "post": {
+        "operationId": "UploadFiles",
+        "responses": {
+          "200": {
+            "description": "Files uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "$ref": "#/components/schemas/DocumentDTO"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No files uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error processing files",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload multiple files to S3 and create documents in DB\n\nFile size and count limits:\n- Maximum file size: 100MB per file (configured in multer)\n- Maximum request size: 1000MB (configured in body-parser)\n- No explicit file count limit, but practical limitations exist based on:\n  - Total request size (sum of all files must be under 1000MB)\n  - Server processing time (large batches may cause timeouts)\n  - Available server memory\n\nFor very large batches, consider splitting uploads into multiple requests.",
+        "tags": ["Document"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "type": "array",
+                    "description": "Files to be uploaded."
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to associate documents with."
+                  },
+                  "documentType": {
+                    "type": "string"
+                  }
+                },
+                "required": ["files", "projectId"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents/update": {
+      "put": {
+        "operationId": "UpdateDocument",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "update a document",
+        "tags": ["Document"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_DocumentDTO_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents/delete": {
+      "put": {
+        "operationId": "DeleteDocuments",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "delete many documents",
+        "tags": ["Document"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentIds",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/TrialBalance/uploadTrialBalanceFile": {
+      "post": {
+        "operationId": "UploadTrialBalanceFile",
+        "responses": {
+          "200": {
+            "description": "Trial balance imported successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TrialBalanceDTO"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid file or data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload a trial balance Excel file",
+        "tags": ["TrialBalance"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Excel file containing trial balance data"
+                  },
+                  "projectId": {
+                    "type": "string",
+                    "description": "Project ID to associate with the trial balance"
+                  }
+                },
+                "required": ["file", "projectId"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TrialBalance/getTrialBalancesByProjectId": {
+      "get": {
+        "operationId": "GetTrialBalancesByProjectId",
+        "responses": {
+          "200": {
+            "description": "Trial balances retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "$ref": "#/components/schemas/TrialBalanceDTO"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid project ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get trial balances by project ID",
+        "tags": ["TrialBalance"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "Project ID to filter trial balances",
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/TrialBalance/getTrialBalanceByProjectIdAndPeriod": {
+      "get": {
+        "operationId": "GetTrialBalancesByProjectIdAndPeriod",
+        "responses": {
+          "200": {
+            "description": "Trial balances retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TrialBalanceDTO"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid project ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get trial balance by project ID and Period",
+        "tags": ["TrialBalance"],
+        "security": [],
+        "parameters": [
+          {
+            "description": "Project ID to filter trial balances",
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "to filter trial balances",
+            "in": "query",
+            "name": "period",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/TrialBalance/updateTrialBalance": {
+      "put": {
+        "operationId": "UpdateTrialBalance",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/TrialBalanceDTO"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": ["TrialBalance"],
+        "security": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_TrialBalanceDTO_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taxDocuments": {
+      "get": {
+        "operationId": "GetTaxDocumentById",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxDocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["TaxDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/taxDocuments/getMissingDocuments": {
+      "get": {
+        "operationId": "GetMissingDocuments",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "tags": ["TaxDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/taxDocuments/uploadFile": {
+      "post": {
+        "operationId": "UploadTaxDocument",
+        "responses": {
+          "200": {
+            "description": "Files uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "No file uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error processing file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload a file to S3 and create document in DB",
+        "tags": ["TaxDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "File to be uploaded."
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "pagesToCut": {
+                    "type": "string"
+                  }
+                },
+                "required": ["file", "projectId"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taxDocuments/update": {
+      "put": {
+        "operationId": "UpdateTaxDocument",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "update a document",
+        "tags": ["TaxDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_TaxDocumentDTO_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taxDocuments/generateTaxReturnSummary": {
+      "post": {
+        "operationId": "GenerateTaxReturnSummary",
+        "responses": {
+          "200": {
+            "description": "Tax return summary generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "allDocumentSectionMatches": {
+                      "$ref": "#/components/schemas/Record_number.Record_string.boolean__"
+                    },
+                    "accountEmail": {
+                      "type": "string"
+                    },
+                    "stepMessages": {
+                      "$ref": "#/components/schemas/Record_string.string-Array_"
+                    },
+                    "validationPassed": {
+                      "type": "boolean"
+                    },
+                    "extractionCompleted": {
+                      "type": "boolean"
+                    },
+                    "emailDraft": {
+                      "type": "string"
+                    },
+                    "processedDocuments": {
+                      "items": {
+                        "properties": {
+                          "language": {
+                            "type": "string"
+                          },
+                          "federalIsRefund": {
+                            "type": "boolean"
+                          },
+                          "federalAmount": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "provincialIsRefund": {
+                            "type": "boolean"
+                          },
+                          "provincialAmount": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "combinedPdf": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "language",
+                          "federalIsRefund",
+                          "federalAmount",
+                          "provincialIsRefund",
+                          "provincialAmount",
+                          "combinedPdf"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "accountEmail",
+                    "stepMessages",
+                    "validationPassed",
+                    "extractionCompleted",
+                    "emailDraft",
+                    "processedDocuments"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No files uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error processing files",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Generate summary of tax return report for signature\nExtracts specific sections from tax report PDFs and generates an email draft",
+        "tags": ["TaxDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "type": "array",
+                    "description": "Tax report PDF documents"
+                  }
+                },
+                "required": ["files"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/statement": {
+      "get": {
+        "operationId": "GetStatementById",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatementDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Statement"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "statementId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/statement/analyze": {
+      "post": {
+        "operationId": "AnalyzeStatement",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "tags": ["Statement"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/statement/updateStatement": {
+      "put": {
+        "operationId": "UpdateStatement",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatementDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Statement"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_StatementDTO_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/statement/trackDocument": {
+      "get": {
+        "operationId": "TrackDocumentChanges",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "tags": ["Statement"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/statement/export-statements-to-excel": {
+      "get": {
+        "operationId": "ExportStatementsToExcel",
+        "responses": {
+          "200": {
+            "description": "Excel file exported successfully"
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["message"],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Statement"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentIdsArray",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "in": "query",
+            "name": "statementFormat",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/StatementFormat"
+            }
+          }
+        ]
+      }
+    },
+    "/proofDocument": {
+      "get": {
+        "operationId": "GetProofDocumentById",
+        "responses": {
+          "200": {
+            "description": "The proof document data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProofDocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a proof document by its ID",
+        "tags": ["ProofDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "ID of the proof document to retrieve",
+            "in": "query",
+            "name": "proofDocumentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/proofDocument/analyze": {
+      "post": {
+        "operationId": "AnalyzeProofDocuments",
+        "responses": {
+          "200": {
+            "description": "The analyzed proof document data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "items": {
+                        "$ref": "#/components/schemas/ProofDocumentDTO"
+                      },
+                      "type": "array"
+                    },
+                    {
+                      "properties": {
+                        "details": {},
+                        "error": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["details", "error"],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Analyze one or more proof documents",
+        "tags": ["ProofDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "Array of document IDs to analyze",
+            "in": "query",
+            "name": "documentIds",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/proofDocument/updateProofDocument": {
+      "put": {
+        "operationId": "UpdateProofDocument",
+        "responses": {
+          "200": {
+            "description": "The updated proof document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProofDocumentDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update a proof document with new data",
+        "tags": ["ProofDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "ID of the proof document to update",
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated proof document data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_ProofDocumentDTO_",
+                "description": "Updated proof document data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proofDocument/export-proof-documents": {
+      "get": {
+        "operationId": "ExportProofDocumentsToZip",
+        "responses": {
+          "200": {
+            "description": "Proof documents exported successfully"
+          },
+          "500": {
+            "description": "Error response handler",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["message"],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Export proof documents from a project to a single Excel file or a zip file containing separate files for each document type",
+        "tags": ["ProofDocument"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "ID of the project containing proof documents to export",
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Export format (EXCEL, QBO, XERO)",
+            "in": "query",
+            "name": "proofDocumentFormat",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ProofDocumentFormat"
+            }
+          },
+          {
+            "description": "Optional array of document types to filter by",
+            "in": "query",
+            "name": "documentTypes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ProofDocumentType"
+              }
+            }
+          },
+          {
+            "description": "Export layout type (DOCUMENT_PER_ROW or LINE_ITEM_PER_ROW)",
+            "in": "query",
+            "name": "exportLayout",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ProofDocumentExportLayout"
+            }
+          },
+          {
+            "description": "Optional array of specific document IDs within the project to export",
+            "in": "query",
+            "name": "documentIds",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/project": {
+      "get": {
+        "operationId": "GetAllProjectsByUser",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectDTO"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "get all projects of current user",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectType",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/ProjectType"
+            }
+          }
+        ]
+      }
+    },
+    "/project/clientProjects": {
+      "get": {
+        "operationId": "GetAllProjectsByClient",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectDTO"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "get all projects of a client, business organization agnostic",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/project/hasAccessToProject": {
+      "get": {
+        "operationId": "HasAccessToProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "description": "check if a user has access to a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "check if the user has admin access to the project, default is false",
+            "in": "query",
+            "name": "checkAdminAccess",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    },
+    "/project/taxProject": {
+      "get": {
+        "operationId": "GetAllTaxProjectsByUser",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaxProjectDTO"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "get all tax projects of current user",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectType",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/TaxProjectType"
+            }
+          }
+        ]
+      }
+    },
+    "/project/taxPersonalProject": {
+      "get": {
+        "operationId": "GetAllTaxPersonalProjectsByUser",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TaxPersonalProjectDTO"
+                  },
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "get all personal tax projects of current user",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/project/{projectId}": {
+      "get": {
+        "operationId": "GetPopulatedProjectById",
+        "responses": {
+          "200": {
+            "description": "The project if the user has access",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "get a project by id",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "The ID of the project to retrieve",
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "update a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_ProjectDTO_"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/create": {
+      "post": {
+        "operationId": "CreateProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "sendClientNotification": {
+                    "type": "boolean"
+                  },
+                  "accountIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "projectData": {
+                    "$ref": "#/components/schemas/Partial_ProjectDTO_"
+                  }
+                },
+                "required": ["projectData"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/createTaxProject": {
+      "post": {
+        "operationId": "CreateTaxProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a tax project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "sendClientNotification": {
+                    "type": "boolean"
+                  },
+                  "accountIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "projectData": {
+                    "$ref": "#/components/schemas/Partial_TaxProjectDTO_"
+                  }
+                },
+                "required": ["projectData"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/project/addUserToProject": {
+      "post": {
+        "operationId": "AddUserToProject",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "description": "add a user to a project, any user can add another user to a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "accountId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/project/reassignDocumentToProject": {
+      "post": {
+        "operationId": "ReassignDocumentToProject",
+        "responses": {
+          "200": {
+            "description": "new project of the document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "change the project of an existing document",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "newProjectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/project/reassignProjectAssignees": {
+      "post": {
+        "operationId": "ReassignProjectAssignees",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "assign new users to a project and overrides existing assigned users, any user in the project or any org admin can add another user to a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "newAssigneeIds",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/project/sendClientOTPLink": {
+      "put": {
+        "operationId": "SendClientOTPLink",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "send an OTP link to a client to view a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "clientEmail",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/project/deleteProject": {
+      "delete": {
+        "operationId": "DeleteProject",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "description": "delete a project, only admin can delete a project",
+        "tags": ["Project"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/businessOrganization": {
+      "get": {
+        "operationId": "GetBusinessOrganizationById",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessOrganizationDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organizationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/businessOrganization/getBusinessOrganizationByAccount": {
+      "get": {
+        "operationId": "GetBusinessOrganizationByAccount",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessOrganizationDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/businessOrganization/getDefaultProject": {
+      "get": {
+        "operationId": "GetDefaultProject",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/businessOrganization/createBusinessOrganization": {
+      "post": {
+        "operationId": "CreateBusinessOrganization",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessOrganizationDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organizationName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/businessOrganization/updateBusinessOrganizationSettings": {
+      "post": {
+        "operationId": "UpdateBusinessOrganizationSettings",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessOrganizationDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "update business organization settings, only organization admin can update settings",
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationSettingsDTO"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/businessOrganization/inviteUser": {
+      "post": {
+        "operationId": "InviteUser",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDTO"
+                }
+              }
+            }
+          }
+        },
+        "description": "create a new account in the organization, only organization admin can create accounts",
+        "tags": ["Business Organization"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "role": {
+                    "$ref": "#/components/schemas/AccountRole"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "required": ["role", "name", "email"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aws/fileFromS3": {
+      "get": {
+        "operationId": "GetFileFromS3",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ContentType": {
+                      "type": "string"
+                    },
+                    "ContentLength": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "Body": {}
+                  },
+                  "required": ["ContentType", "ContentLength", "Body"],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Get a file from S3.",
+        "tags": ["AWS"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "The ID of the document in mongo to retrieve.",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/aws/download-zip": {
+      "get": {
+        "operationId": "DownloadZipFile",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "Download multiple S3 files as a single ZIP",
+        "tags": ["AWS"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "The ID of the project to download files from",
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Optional array of document types to filter by",
+            "in": "query",
+            "name": "documentTypes",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DocumentType"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "Register a new org and account in the db, but does not activate user in supabase",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "role": {
+                    "$ref": "#/components/schemas/AccountRole"
+                  },
+                  "fullName": {
+                    "type": "string"
+                  },
+                  "businessOrganizationName": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "required": ["fullName", "businessOrganizationName", "email"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/gmail/send": {
+      "post": {
+        "operationId": "SendEmail",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {},
+                    "status": {
+                      "type": "number",
+                      "format": "double"
+                    }
+                  },
+                  "required": ["data", "status"],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "Send an email from the admin account to the specified recipient",
+        "tags": ["Authentication"],
+        "security": [],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "emailBody": {
+                    "type": "string"
+                  },
+                  "subject": {
+                    "type": "string"
+                  },
+                  "recipient": {
+                    "type": "string"
+                  },
+                  "sender": {
+                    "type": "string"
+                  }
+                },
+                "required": ["emailBody", "subject", "recipient", "sender"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/getFullAccountInfo": {
+      "get": {
+        "operationId": "GetFullAccountInfo",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/evaluateStatementAnalysis": {
+      "post": {
+        "operationId": "EvaluateStatementAnalysis",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "analyzes the statements and add flag to the statement if it is balanced or not, default to all documents in the default project",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "documentIds",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/admin/test": {
+      "post": {
+        "operationId": "Test",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "documentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/deleteAccounts": {
+      "delete": {
+        "operationId": "DeleteAccount",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "description": "WARNING DELETES ACCOUNTS IDS AND CLEANS UP DB REFERENCES",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "accountIds",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/admin/deleteProject": {
+      "delete": {
+        "operationId": "DeleteProjectAdmin",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "description": "delete a project",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "projectId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/deleteOrphanedDocuments": {
+      "delete": {
+        "operationId": "DeleteOrphanedDocuments",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "delete all documents that are not associated with any project",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/deleteOrphanedProjects": {
+      "delete": {
+        "operationId": "DeleteOrphanedProjects",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "delete all projects that are not associated with any business organization",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/admin/activateAccount": {
+      "post": {
+        "operationId": "ActivateAccount",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "description": "Activate an account for a user who has already registered\nOnly creates the supabase user without adding them to an organization",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "role": {
+                    "$ref": "#/components/schemas/AccountRole"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "required": ["role", "name", "email"],
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/downloadFile": {
+      "get": {
+        "operationId": "DownloadFileFromS3",
+        "responses": {
+          "200": {
+            "description": "File downloaded successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "File not found"
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["message"],
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Download a file directly from S3.",
+        "tags": ["Admin"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "The ID of the document to download.",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Optional custom filename for the downloaded file.",
+            "in": "query",
+            "name": "filename",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/account/getAccount": {
+      "get": {
+        "operationId": "GetAccount",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Account"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": []
+      }
+    },
+    "/account/addAccountToBusinessOrganization": {
+      "post": {
+        "operationId": "AddAccountToBusinessOrganization",
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        },
+        "description": "add an existing account to a business organization",
+        "tags": ["Account"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organizationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/account/updateAccount": {
+      "put": {
+        "operationId": "UpdateAccount",
+        "responses": {
+          "200": {
+            "description": "Account Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "description": "Update an existing account.",
+        "tags": ["Account"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "The account data to update.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partial_AccountDTO_",
+                "description": "The account data to update."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ]
+}
