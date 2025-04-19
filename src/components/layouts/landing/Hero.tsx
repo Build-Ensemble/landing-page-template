@@ -35,12 +35,12 @@ const HeroSection = ({
   signUp: () => void;
 }) => {
   return (
-    <section className="relative pt-12 md:pt-16 overflow-visible bg-gradient-to-b from-accent to-white min-h-[80vh] flex items-center">
+    <section className="relative pt-12 md:pt-16 overflow-visible bg-gradient-to-b from-accent to-white min-h-[75vh] flex items-center">
       {/* Background elements */}
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
       <div className="absolute bottom-1/3 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-secondary/30 rounded-full blur-[120px]"></div>
       
-      <div className="container px-4 mx-auto relative z-10 max-w-4xl">
+      <div className="container px-4 mx-auto relative max-w-4xl">
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl">

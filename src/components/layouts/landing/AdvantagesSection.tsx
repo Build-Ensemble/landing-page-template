@@ -66,7 +66,7 @@ const EnsembleSection = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 px-4">
+          <div className="w-full lg:w-1/2 px-4 z-50">
             <div className="relative">
               <div className="bg-white rounded-xl shadow-lg p-8 border border-slate-100">
                 <div className="mb-8">
