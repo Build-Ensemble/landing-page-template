@@ -43,7 +43,7 @@ export const Cta = ({
                   Ready to Up Your Newsletter Game?
                 </CardTitle>
               </CardHeader>
-              <p className="text-white/80 text-lg">Transform your accounting firm with AI-powered automation</p>
+              <p className="text-white/80 text-lg">Send your newsletter out on time, every time.</p>
             </div>
 
             {/* Right Column - Buttons */}

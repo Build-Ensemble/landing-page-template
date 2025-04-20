@@ -31,7 +31,7 @@
 //   }, []);
 
 //   const signInDemo = async (
-//     email: string = 'demo@tryensemble.com',
+//     email: string = 'demo@tryHeyWeekly.com',
 //     password: string = '123456',
 //   ) => {
 //     const { data, error } = await supabase.auth.signInWithPassword({

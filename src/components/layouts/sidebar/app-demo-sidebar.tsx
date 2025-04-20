@@ -56,7 +56,7 @@
 //                   <Icons.logo />
 //                 </div>
 //                 <div className="grid flex-1 text-left text-sm leading-tight">
-//                   <span className="truncate font-semibold">Ensemble AI</span>
+//                   <span className="truncate font-semibold">HeyWeekly AI</span>
 //                   <span className="truncate text-xs">Enterprise</span>
 //                 </div>
 //               </a>

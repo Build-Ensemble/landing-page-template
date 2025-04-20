@@ -10,7 +10,7 @@ export default function DemoPage() {
                   Schedule a Demo
                 </h1>
                 <p className="max-w-[500px] text-muted-foreground md:text-xl/relaxed">
-                  See how Ensemble can help turn you automate your financial
+                  See how HeyWeekly can help turn you automate your financial
                   document workflows.
                 </p>
               </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 
-const EnsembleSection = () => {
+const HeyWeeklySection = () => {
   return (
     <section id="advantages" className="py-20 bg-accent">
       <div className="container px-4 mx-auto">
@@ -9,10 +9,10 @@ const EnsembleSection = () => {
           <div className="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
             <div className="max-w-lg">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Why Choose Ensemble Over DocuClipper
+                Why Choose HeyWeekly Over DocuClipper
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Ensemble is purpose-built for accountants, with a focus on
+                HeyWeekly is purpose-built for accountants, with a focus on
                 financial document understanding and integration.
               </p>
 
@@ -74,7 +74,7 @@ const EnsembleSection = () => {
                     Comparison with DocuClipper
                   </h3>
                   <p className="text-gray-600">
-                    See how Ensemble stacks up against other document extraction
+                    See how HeyWeekly stacks up against other document extraction
                     solutions
                   </p>
                 </div>
@@ -87,7 +87,7 @@ const EnsembleSection = () => {
                           Features
                         </th>
                         <th className="text-center py-3 font-medium text-primary">
-                          Ensemble
+                          HeyWeekly
                         </th>
                         <th className="text-center py-3 font-medium text-gray-600">
                           DocuClipper
@@ -156,4 +156,4 @@ const EnsembleSection = () => {
   );
 };
 
-export default EnsembleSection;
+export default HeyWeeklySection;
