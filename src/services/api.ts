@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-// export * from './services/awsapi';
+export * from './gmail';
 // export * from './services/account-api';
 // export * from './services/admin-api';
 // export * from './services/authentication-api';
