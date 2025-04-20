@@ -48,6 +48,7 @@ next-env.d.ts
 !/src/services/api.ts
 !/src/services/base.ts
 !/src/services/gmail.ts
+!/src/services/configuration.ts
 
 # amplify
 .amplify
