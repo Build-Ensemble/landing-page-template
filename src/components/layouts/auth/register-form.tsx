@@ -47,7 +47,7 @@ export function RegisterForm({
         await onRegister(email, fullName, password, company, phoneNumber);
         setErrorMessage('');
         setIsLoading(false);
-        router.push('/admin/register/success');
+        router.push('/sign-up');
       } catch (error: any) {
         console.log(error);
         setErrorMessage(error.message);
@@ -65,7 +65,7 @@ export function RegisterForm({
           </CardDescription>
           <div className="mt-4 text-left text-sm">
             Already have an account?{' '}
-            <Link href="/admin/login" className="underline underline-offset-4">
+            <Link href="/login" className="underline underline-offset-4">
               Login
             </Link>
           </div>

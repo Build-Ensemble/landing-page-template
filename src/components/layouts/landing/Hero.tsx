@@ -35,7 +35,7 @@ const HeroSection = ({
   signUp: () => void;
 }) => {
   return (
-    <section className="relative pt-20 md:pt-40 pb-16 md:pb-40 overflow-visible bg-gradient-to-b from-accent to-white min-h-[75vh] flex items-center">
+    <section className="relative pt-20 md:pt-40 pb-20 md:pb-40 overflow-visible bg-gradient-to-b from-accent to-white min-h-[60vh] flex items-center">
       {/* Background elements */}
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
       <div className="absolute bottom-1/3 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-secondary/30 rounded-full blur-[120px]"></div>
@@ -43,22 +43,22 @@ const HeroSection = ({
       <div className="container px-4 mx-auto relative max-w-4xl">
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl z-20 relative">
             Real Estate Newsletters on Autopilot
           </h1>
           
           {/* Subheading - centered */}
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto z-20 relative">
             Stay top of mind with your clients and prospects with an insight-driven newsletter, personalized to your style.
           </p>
                 {/* Rating component - centered */}
-          <div className="mb-4">
+          <div className="mb-4 z-20">
             <Rating avatars={avatars} className="mx-auto" />
           </div>
           
           
           {/* Buttons - centered and larger */}
-          <div className="flex flex-wrap gap-4 mb-6 justify-center items-center">
+          <div className="flex flex-wrap gap-4 mb-6 justify-center items-center z-20">
             <MovingBorderButton
               borderRadius="0.5rem"
               className="relative bg-primary/90 text-white flex items-center justify-center hover:bg-primary/95"
@@ -81,7 +81,7 @@ const HeroSection = ({
             
             <Button
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-7 text-xl"
+              className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-7 text-xl z-20"
             >
               <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
               <p>Get a FREE consultation</p>
@@ -90,7 +90,7 @@ const HeroSection = ({
           
 
           {/* Feature bullets - centered */}
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
+          <div className="flex flex-col md:flex-row gap-6 justify-center z-20">
             <div className="flex items-center">
               <CheckCircle className="h-6 w-6 text-secondary mr-2" />
               <span className="text-base font-medium">Pre-order now</span>

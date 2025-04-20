@@ -9,10 +9,10 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import { AuthenticationApi } from '@/services/services/authentication-api';
+// import { AuthenticationApi } from '@/services/services/authentication-api';
 
 const SignUp = ({ className }: { className?: string }) => {
-  const authenticationApi = new AuthenticationApi();
+  // const authenticationApi = new AuthenticationApi();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -23,20 +23,20 @@ const SignUp = ({ className }: { className?: string }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    authenticationApi
-      .sendEmail({
-        emailBody: 'new registration on Ensemble: ' + email,
-        subject: 'New registration on Ensemble',
-        recipient: 'admin@ensemble-technologies.com',
-        sender: 'admin@tryensemble.com',
-      })
-      .then((res: any) => {
-        console.log(res);
-        setSuccess(true);
-      })
-      .catch((err: any) => {
-        setError(err.message);
-      });
+    // authenticationApi
+    //   .sendEmail({
+    //     emailBody: 'new registration on Ensemble: ' + email,
+    //     subject: 'New registration on Ensemble',
+    //     recipient: 'admin@ensemble-technologies.com',
+    //     sender: 'admin@tryensemble.com',
+    //   })
+    //   .then((res: any) => {
+    //     console.log(res);
+    //     setSuccess(true);
+    //   })
+    //   .catch((err: any) => {
+    //     setError(err.message);
+    //   });
   };
   return (
     <div

@@ -1,8 +1,8 @@
 import { Icons } from '@/components/icons';
 import { Linkedin, Twitter } from 'lucide-react';
-export const Footer = () => {
+export const Footer = ({ className }: { className?: string }) => {
   return (
-    <footer id="footer">
+    <footer id="footer" className={className}>
       <hr className="w-11/12 mx-auto" />
 
       <section className="container py-8 border-t border-gray-200 mt-10">
@@ -14,7 +14,7 @@ export const Footer = () => {
               href="/"
               className="font-bold text-2xl text-primary hover:opacity-90 transition-opacity"
             >
-              Ensemble
+              HeyWeekly
             </a>
           </div>
 

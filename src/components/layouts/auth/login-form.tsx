@@ -1,4 +1,5 @@
 'use client';
+
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -69,21 +70,21 @@ export function LoginForm({
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{' '}
               <Link
-                href="/admin/register"
+                href="/sign-up"
                 className="underline underline-offset-4"
               >
                 Sign up
               </Link>
             </div>
-            <div className="mt-4 text-center text-sm">
+            {/* <div className="mt-4 text-center text-sm">
               Forgot your password?{' '}
               <Link
-                href="/admin/resetPassword"
+                href="/reset-password"
                 className="underline underline-offset-4"
               >
                 Reset it here
               </Link>
-            </div>
+            </div> */}
           </form>
         </CardContent>
         <CardFooter className="flex flex-col items-center gap-4">

@@ -20,11 +20,11 @@ export function FAQ({ items, className }: FAQProps) {
       <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Left side - Header section */}
-          <div className="w-full md:w-3/5 mb-8 md:mb-0 text-center md:text-left">
+          <div className="w-full md:w-3/5 mb-8 md:mb-0 text-center md:text-left z-20">
             <h1 className="mb-4 text-3xl md:text-4xl font-bold text-gray-900">
               Frequently Asked Questions
             </h1>
-            <h2 className="text-lg text-gray-600">
+            <h2 className="text-lg text-gray-600 z-20">
               Have questions? We're here to help. <br className="hidden md:block" />
               You can email us at ensemble@outlook.com or try our live chat. We are here to assist you.
             </h2>

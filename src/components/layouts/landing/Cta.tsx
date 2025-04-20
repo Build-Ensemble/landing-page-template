@@ -11,24 +11,9 @@ import {
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Rating } from "@/components/layouts/landing/rating"
-
-const avatars = [
-  { 
-    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
-    alt: "Avatar 1", 
-    fallback: "A1" 
-  },
-  { 
-    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
-    alt: "Avatar 2", 
-    fallback: "A2" 
-  },
-  { 
-    src: "/public/lovable-uploads/c31431e0-bcfc-4039-a271-e2d436830d6a.png", 
-    alt: "Avatar 3", 
-    fallback: "A3" 
-  }
-]
+import { MovingBorderButton } from '@/components/ui/moving-border';
+import { SparklesIcon } from "lucide-react"
+import { BadgeCheck } from "lucide-react"
 
 export const Cta = ({
   className,
@@ -39,40 +24,64 @@ export const Cta = ({
 }) => {
   const router = useRouter();
   return (
-    <section className="relative pt-20 md:pt-60 pb-32 overflow-visible bg-gradient-to-b from-accent to-white background">
-      <Card className={cn('container', className)}>
-        <CardHeader>
-          <CardTitle></CardTitle>
-        </CardHeader>
-        {/* <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary rounded-full blur-circle"></div> */}
-        <CardContent>
-          <div className="lg:col-start-1">
-            <h2 className="text-3xl md:text-4xl font-bold ">
-              Your
-              <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                {` `}COMPLETE {` `}
-              </span>
-              accounting practice, in one place
-            </h2>
-            <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
-              Let us customize your experience
-            </p>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <div className="space-y-4 lg:col-start-2">
-           
-            <Button
-              variant="outline"
-              className="w-full md:w-auto"
-              onClick={signUp}
-            >
-              Sign up for free
-            </Button>
-          </div>
+    <section className={cn(
+      "max-w-6xl mx-auto bg-gradient-to-b from-purple-50/80 to-purple-100/50 text-white py-24 px-8 rounded-3xl shadow-[0_0_50px_-12px] shadow-purple-500/20 z-20 relative overflow-hidden",
+      "before:absolute before:inset-0 before:bg-gradient-to-b before:from-purple-500/5 before:to-transparent before:pointer-events-none",
+      className
+    )}>
+      <div className="max-w-5xl mx-auto">
+        <Card className={cn(
+          'bg-gradient-to-br from-[#1a1033]/95 to-[#1a1033]/90 backdrop-blur-xl border-purple-900/20 shadow-xl p-12 relative overflow-hidden',
+          "before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-500/10 before:to-transparent before:pointer-events-none",
+          className
+        )}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Title */}
+            <div className="flex flex-col gap-6">
+              <CardHeader className="p-0">
+                <CardTitle className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/90 text-transparent bg-clip-text select-text">
+                  Ready to Up Your Newsletter Game?
+                </CardTitle>
+              </CardHeader>
+              <p className="text-white/80 text-lg">Transform your accounting firm with AI-powered automation</p>
+            </div>
 
-        </CardFooter>
-      </Card>
+            {/* Right Column - Buttons */}
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
+                <MovingBorderButton
+                  borderRadius="0.75rem"
+                  className="relative bg-gradient-to-r from-primary to-primary/90 text-white flex items-center justify-center hover:from-primary/90 hover:to-primary transition-all duration-300"
+                  containerClassName="h-[74px] w-full"
+                  borderClassName="opacity-20"
+                  duration={2500}
+                  onClick={signUp}
+                >
+                  <div className="px-10 py-6 flex items-center w-full justify-center gap-2">
+                    <SparklesIcon className="mr-3" size={22} strokeWidth={2.5} />
+                    <span className="text-xl font-semibold tracking-wide">
+                      Sign up
+                    </span>
+                    <span className="text-sm font-bold ml-1.5 opacity-80">
+                      {' '}
+                      - it's free
+                    </span>
+                  </div>
+                </MovingBorderButton>
+                
+                <Button
+                  variant="outline"
+                  className="border-white/30 text-purple-800 hover:bg-white hover:text-[#1a1033] px-10 py-7 text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full"
+                >
+                  <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
+                  <p>Book a Demo</p>
+                </Button>
+              </div>
+              <p className="text-sm text-white/80 select-text font-medium text-center">No credit card required • 14-day free trial</p>
+            </div>
+          </div>
+        </Card>
+      </div>
     </section>
   );
 };

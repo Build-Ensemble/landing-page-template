@@ -17,10 +17,10 @@ const routeList: RouteProps[] = [
     href: '/#faq',
     label: 'FAQ',
   },
-  {
-    href: '/pricing',
-    label: 'Pricing',
-  }
+  // {
+  //   href: '/pricing',
+  //   label: 'Pricing',
+  // }
   
 ];
 
@@ -63,7 +63,7 @@ export const Navbar = ({
             <div className="flex aspect-square size-6 items-center justify-center">
               <Icons.logo />
             </div>
-            <span className="text-base font-semibold">Ensemble</span>
+            <span className="text-base font-semibold">HeyWeekly</span>
           </div>
         </a>
         {!hideAll && (

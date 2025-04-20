@@ -51,12 +51,12 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section id="features" className="py-20 bg-gray-50">
-      <div className="container px-4 mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <div className="container px-4 mx-auto z-20 relative">
+        <div className="text-center max-w-3xl mx-auto mb-16 z-20">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 z-20">
             Your Complete Newsletter, Automated
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 z-20">
             Every piece of content you need, written in your voice and personalized for your market.
           </p>
         </div>
