@@ -1,7 +1,6 @@
 import { OAuth2Client } from 'google-auth-library';
 import { google, gmail_v1 } from 'googleapis';
 import Gmail = gmail_v1.Gmail;
-
 class GoogleAuthService {
   // Get the Google client using the refresh token
   static getOAuth2Client(refreshToken: string) {
