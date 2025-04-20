@@ -24,7 +24,7 @@ export const Footer = ({ className }: { className?: string }) => {
             <h3 className="font-bold text-lg mb-2">Connect With Us</h3>
             <a
               rel="noreferrer noopener"
-              href="https://www.linkedin.com/company/ensemble-books/"
+              href="https://www.linkedin.com/company/HeyWeekly-books/"
               target="_blank"
               className="opacity-70 hover:opacity-100 transition-opacity flex items-center gap-2 text-sm hover:text-primary"
             >
@@ -37,7 +37,7 @@ export const Footer = ({ className }: { className?: string }) => {
             <h3 className="font-bold text-lg mb-2">Company</h3>
 
             <a
-              href="mailto:simon@tryensemble.com?subject=ensemble%20inquiry"
+              href="mailto:simon@tryHeyWeekly.com?subject=HeyWeekly%20inquiry"
               className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-opacity"
             >
               Contact
@@ -48,7 +48,7 @@ export const Footer = ({ className }: { className?: string }) => {
 
       <section className="container pb-8 text-center">
         <p className="text-sm text-gray-500">
-          © {new Date().getFullYear()} Ensemble. All rights reserved.
+          © {new Date().getFullYear()} HeyWeekly. All rights reserved.
         </p>
       </section>
     </footer>

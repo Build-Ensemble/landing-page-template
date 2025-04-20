@@ -43,13 +43,13 @@ const Landing = () => {
 
   return (
     <div>
-      <div className="fixed w-[400px] md:w-screen top-12 z-10">
+      {/* <div className="fixed w-[400px] md:w-screen top-12 z-10">
         <div className="relative w-full h-full">
           <div className="absolute top-4 right-3 w-[100px] md:w-screen h-[100px] md:h-screen">
             <FBXViewer />
           </div>
         </div>
-      </div>
+      </div> */}
       <Navbar
         className="backdrop-blur-md fixed top-0 left-0 right-0 z-50 max-w-screen-xl mx-auto"
         login={login}

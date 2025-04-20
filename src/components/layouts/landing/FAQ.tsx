@@ -26,7 +26,7 @@ export function FAQ({ items, className }: FAQProps) {
             </h1>
             <h2 className="text-lg text-gray-600 z-20">
               Have questions? We're here to help. <br className="hidden md:block" />
-              You can email us at ensemble@outlook.com or try our live chat. We are here to assist you.
+              You can email us at HeyWeekly@outlook.com or try our live chat. We are here to assist you.
             </h2>
           </div>
           
