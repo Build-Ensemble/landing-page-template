@@ -11,7 +11,6 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { Icons } from '../../icons';
-import { NavUser } from './nav-user';
 import {
   Tooltip,
   TooltipContent,
