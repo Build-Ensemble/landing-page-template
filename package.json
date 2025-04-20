@@ -52,6 +52,8 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.5.1",
+    "google-auth-library": "^9.15.1",
+    "googleapis": "^148.0.0",
     "html2pdf.js": "^0.10.3",
     "input-otp": "^1.4.1",
     "lucide-react": "^0.469.0",

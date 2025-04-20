@@ -9,35 +9,45 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-// import { AuthenticationApi } from '@/services/services/authentication-api';
+import  GoogleAuthService  from "@/services/gmail";
 
 const SignUp = ({ className }: { className?: string }) => {
-  // const authenticationApi = new AuthenticationApi();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // authenticationApi
-    //   .sendEmail({
-    //     emailBody: 'new registration on Ensemble: ' + email,
-    //     subject: 'New registration on Ensemble',
-    //     recipient: 'admin@ensemble-technologies.com',
-    //     sender: 'admin@tryensemble.com',
-    //   })
-    //   .then((res: any) => {
-    //     console.log(res);
-    //     setSuccess(true);
-    //   })
-    //   .catch((err: any) => {
-    //     setError(err.message);
-    //   });
+    setLoading(true);
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+      
+      setSuccess(true);
+    } catch (err: any) {
+    } finally {
+      setLoading(false);
+    }
   };
+
+
   return (
     <div
       className={cn(
