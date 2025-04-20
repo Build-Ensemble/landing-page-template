@@ -63,7 +63,7 @@ export const Navbar = ({
             <div className="flex aspect-square size-6 items-center justify-center">
               <Icons.logo />
             </div>
-            <span className="text-base font-semibold">HeyWeekly</span>
+            <span className="text-base font-semibold">Findre</span>
           </div>
         </a>
         {!hideAll && (
