@@ -10,6 +10,7 @@ import Hero from './Hero';
 import { useState, useEffect, useRef } from 'react';
 import { FAQ } from "@/components/layouts/landing/FAQ";
 import FBXViewer from './FBXViewer';
+import ProblemStatement from './ProblemStatement';
 
 const faqItems = [
   {
@@ -33,6 +34,7 @@ const faqItems = [
     answer: "We're a team of experienced professionals in AI, financial technology, and data processing, committed to simplifying financial document workflows.",
   },
 ];
+
 const Landing = () => {
   const router = useRouter();
 
@@ -42,7 +44,7 @@ const Landing = () => {
 
   return (
     <div>
-      <div className="fixed z-10 w-[400px] md:w-screen top-20">
+      <div className="fixed z-10 w-[400px] md:w-screen top-12">
         <div className="relative w-full h-full">
           <div className="absolute top-4 right-3 w-[100px] md:w-screen h-[100px] md:h-screen">
             <FBXViewer />
@@ -59,11 +61,13 @@ const Landing = () => {
 
       <Hero signUp={signUp} />
 
+      <ProblemStatement />
+
       <section className="bg-white flex flex-col items-center justify-center pt-20" id="features">
         <FeaturesSection />
       </section>
 
-      <AdvantagesSection />
+      {/* <AdvantagesSection /> */}
       <Cta className="mt-20 mb-20" signUp={signUp} />
 
       <section id="faq">

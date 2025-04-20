@@ -1,66 +1,63 @@
 import React from 'react';
 import {
-  FileText,
-  Zap,
-  Database,
-  Globe,
-  Lock,
+  Building2,
+  LineChart,
+  Store,
+  Home,
+  Newspaper,
+  Trophy,
   BarChart,
-  Sheet,
-  File,
-  Files,
-  Check,
+  TrendingUp
 } from 'lucide-react';
 
 const features = [
   {
-    icon: <Files className="h-8 w-8 text-primary" />,
-    title: 'Multi-Document Support',
+    icon: <Building2 className="h-8 w-8 text-primary" />,
+    title: "Events",
     description:
-      'Process invoices, receipts, bank statements, tax forms, and more in any format (Images, PDFs, etc).',
+      'Showcase local weekend events, community gatherings, and neighborhood activities that matter to your clients.',
   },
   {
-    icon: <Zap className="h-8 w-8 text-primary" />,
-    title: '99.7% Accuracy',
+    icon: <LineChart className="h-8 w-8 text-primary" />,
+    title: 'Monthly Market Stats',
     description:
-      'Our AI models deliver industry-leading accuracy, significantly reducing errors and exceptions.',
+      "Previous month's housing statistics, price trends, and market analysis - automatically compiled and explained.",
   },
   {
-    icon: <Sheet className="h-8 w-8 text-primary" />,
-    title: 'QBO, Xero, Caseware, and more',
+    icon: <Store className="h-8 w-8 text-primary" />,
+    title: 'Local Business Spotlight',
     description:
-      'Get clean, structured CSV data ready to use in QBO, Xero, Caseware, and other accounting software.',
+      'Highlight new and notable businesses in your area, keeping your newsletter locally relevant and engaging.',
   },
   {
-    icon: <File className="h-8 w-8 text-primary" />,
-    title: 'Automatic Document Splitting',
-    description: 'Automatically split different documents in a single image.',
+    icon: <Home className="h-8 w-8 text-primary" />,
+    title: 'Featured Listing',
+    description: 'Showcase your best listing of the week or month with professional descriptions and key highlights.',
   },
   {
-    icon: <Check className="h-8 w-8 text-primary" />,
-    title: 'Self-Balance Verification',
+    icon: <Newspaper className="h-8 w-8 text-primary" />,
+    title: 'National RE News',
     description:
-      'The AI model verifies if its extracted transactions balance and self-corrects if needed.',
+      'Curated national real estate news and trends that impact your local market, explained in simple terms.',
   },
   {
-    icon: <BarChart className="h-8 w-8 text-primary" />,
-    title: 'Best-in-Class Support',
+    icon: <TrendingUp className="h-8 w-8 text-primary" />,
+    title: 'Market Insights',
     description:
-      'Dedicated on-demand support agent with 24/7 availability, 5 minute response time.',
+      'Eye-catching infographics and reports that break down complex market data into digestible insights.',
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 bg-gray-50">
       <div className="container px-4 mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Streamlined Financial Document Processing
+            Your Complete Newsletter, Automated
           </h2>
           <p className="text-lg text-gray-600">
-            Ensemble leverages cutting-edge AI technology to automate and
-            simplify your financial document workflows.
+            Every piece of content you need, written in your voice and personalized for your market.
           </p>
         </div>
 
@@ -68,13 +65,13 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow z-50"
+              className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow z-50"
             >
               <div className="mb-4 p-3 inline-block bg-blue-50 rounded-lg">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

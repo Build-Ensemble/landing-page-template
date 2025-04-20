@@ -7,11 +7,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
-        <title>Ensemble AI</title>
+        <title>HeyWeekly</title>
         <link rel="icon" href="/icon.ico" />
         <meta
           name="description"
-          content="Ensemble AI is a platform for managing your accounting firm."
+          content="Real Estate Newsletters on Autopilot. Stay top of mind with your clients and prospects with an insight-driven newsletter, personalized to your style."
         />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-5QHJNN7N5R"

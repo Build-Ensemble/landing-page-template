@@ -13,19 +13,19 @@ import { Rating } from "@/components/layouts/landing/rating";
 
 const avatars = [
   { 
-    src: "Screenshot_1.png", 
-    alt: "Avatar 3", 
-    fallback: "A3" 
+    src:"/headshots/headshot_1.png", 
+    alt: "John", 
+    fallback: "J" 
   },
   { 
-    src: "Screenshot_2.png", 
-    alt: "Avatar 2", 
-    fallback: "A2" 
+    src: "/headshots/headshot_2.png", 
+    alt: "Brianna", 
+    fallback: "B" 
   },
   { 
-    src: "Screenshot_4.png", 
-    alt: "Avatar 1", 
-    fallback: "A1" 
+    src: "/headshots/headshot_3.png", 
+    alt: "Jamie", 
+    fallback: "J" 
   }
 ]
 
@@ -35,7 +35,7 @@ const HeroSection = ({
   signUp: () => void;
 }) => {
   return (
-    <section className="relative pt-12 md:pt-16 overflow-visible bg-gradient-to-b from-accent to-white min-h-[75vh] flex items-center">
+    <section className="relative pt-20 md:pt-40 pb-16 md:pb-40 overflow-visible bg-gradient-to-b from-accent to-white min-h-[75vh] flex items-center">
       {/* Background elements */}
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
       <div className="absolute bottom-1/3 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-secondary/30 rounded-full blur-[120px]"></div>
@@ -44,15 +44,18 @@ const HeroSection = ({
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl">
-            Financial Data Extraction Workflows, Powered by AI
+            Real Estate Newsletters on Autopilot
           </h1>
           
           {/* Subheading - centered */}
-          <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-2xl mx-auto">
-            Our AI-powered platform extracts data from financial documents
-            with 99.7% accuracy, saving you 80% of processing time and
-            eliminating manual data entry.
+          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            Stay top of mind with your clients and prospects with an insight-driven newsletter, personalized to your style.
           </p>
+                {/* Rating component - centered */}
+          <div className="mb-4">
+            <Rating avatars={avatars} className="mx-auto" />
+          </div>
+          
           
           {/* Buttons - centered and larger */}
           <div className="flex flex-wrap gap-4 mb-6 justify-center items-center">
@@ -85,16 +88,12 @@ const HeroSection = ({
             </Button>
           </div>
           
-          {/* Rating component - centered */}
-          <div className="mb-12">
-            <Rating avatars={avatars} className="mx-auto" />
-          </div>
-          
+
           {/* Feature bullets - centered */}
           <div className="flex flex-col md:flex-row gap-6 justify-center">
             <div className="flex items-center">
               <CheckCircle className="h-6 w-6 text-secondary mr-2" />
-              <span className="text-base font-medium">Free BETA access</span>
+              <span className="text-base font-medium">Pre-order now</span>
             </div>
             <div className="flex items-center">
               <Clock className="h-6 w-6 text-secondary mr-2" />
@@ -103,7 +102,7 @@ const HeroSection = ({
             <div className="flex items-center">
               <CheckCircle className="h-6 w-6 text-secondary mr-2" />
               <span className="text-base font-medium">
-                No credit card required
+                14 days free trial
               </span>
             </div>
           </div>

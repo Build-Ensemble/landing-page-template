@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Star } from 'lucide-react'
+import { Star, StarHalf } from 'lucide-react'
 import { cn } from "@/lib/utils"
 
 interface RatingProps {
@@ -26,16 +26,17 @@ export const Rating: React.FC<RatingProps> = ({
         ))}
       </div>
       <div className="flex items-center gap-2">
-        <span className="text-sm font-medium text-gray-700">
-          Loved by SaaS Startups
+        <span className="text-sm font-medium text-gray-700 hidden md:block">
+          Loved by Real Estate Professionals
         </span>
         <div className="flex">
-          {[1, 2, 3, 4, 5].map((star) => (
+          {[1, 2, 3, 4].map((star) => (
             <Star 
               key={star} 
               className="w-5 h-5 text-yellow-400 fill-current"
             />
           ))}
+          <StarHalf className="w-5 h-5 text-yellow-400 fill-current" />
         </div>
       </div>
     </div>
