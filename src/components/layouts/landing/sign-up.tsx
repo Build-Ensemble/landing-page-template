@@ -9,7 +9,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import  GoogleAuthService  from "@/services/gmail";
 
 const SignUp = ({ className }: { className?: string }) => {
   const [email, setEmail] = useState('');
