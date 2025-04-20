@@ -22,7 +22,6 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
-import { useAuth } from '@/app/admin/context/auth-context';
 
 export function AppSidebar({
   menuItems,
@@ -38,7 +37,6 @@ export function AppSidebar({
   }>;
   activePath: string;
 }) {
-  const { user, logout } = useAuth();
 
   const isPathActive = (href: string) => {
     return activePath === href;
@@ -88,34 +86,7 @@ export function AppSidebar({
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarFooter>
-        {user && user.email !== 'demo@tryensemble.com' ? (
-          <NavUser user={user} logout={logout} />
-        ) : (
-          <SidebarContent>
-            <TooltipProvider disableHoverableContent>
-              <Tooltip delayDuration={100}>
-                <TooltipTrigger asChild>
-                  <Link href="/login">
-                    <Button
-                      variant="outline"
-                      className="w-full justify-center h-10 mt-5"
-                    >
-                      <span className={cn('mr-4')}>
-                        <LogOut size={18} />
-                      </span>
-                      <p className={cn('whitespace-nowrap', 'opacity-100')}>
-                        Log in
-                      </p>
-                    </Button>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent side="right">Log in</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </SidebarContent>
-        )}
-      </SidebarFooter>
+      
     </Sidebar>
   );
 }
