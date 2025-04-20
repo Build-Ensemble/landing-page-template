@@ -16,7 +16,7 @@ export default function LoginPage() {
           <div className="flex h-6 w-6 items-center justify-center">
               <Icons.logo />
             </div>
-            HeyWeekly
+            Findre
           </a>
         </div>
         <div className="flex flex-1 items-center justify-center">

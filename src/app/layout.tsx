@@ -7,7 +7,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
-        <title>HeyWeekly</title>
+        <title>Findre</title>
         <link rel="icon" href="/icon.ico" />
         <meta
           name="description"

@@ -28,7 +28,7 @@ class GoogleAuthService {
 
     console.log("Available env vars:", Object.keys(process.env).filter(key => key.includes('GOOGLE')));
     console.log("Refresh token value:", process.env.GOOGLE_OAUTH_REFRESH_TOKEN ? 'exists' : 'missing');
-    let adminEmailAddress = process.env.ADMIN_EMAIL_ADDRESS || 'admin@HeyWeekly-technologies.com';
+    let adminEmailAddress = process.env.ADMIN_EMAIL_ADDRESS || 'admin@Findre-technologies.com';
     let adminRefreshToken = process.env.GOOGLE_OAUTH_REFRESH_TOKEN;
     
     if (!adminRefreshToken) {

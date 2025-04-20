@@ -121,10 +121,10 @@ const SignUp = ({ className }: { className?: string }) => {
       <Card className="w-full max-w-xl mx-auto py-10">
         <CardHeader className="flex flex-col gap-2 mb-4">
           <CardTitle className="text-5xl font-semibold text-center">
-            See HeyWeekly in action
+            See Findre in action
           </CardTitle>
           <CardDescription className="text-center">
-            We'd love to show you how HeyWeekly's newsletters can boost your retention and referrals.
+            We'd love to show you how Findre's newsletters can boost your retention and referrals.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">

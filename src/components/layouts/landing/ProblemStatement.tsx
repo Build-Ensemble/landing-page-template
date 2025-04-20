@@ -51,7 +51,7 @@ const ProblemStatement: React.FC<ProblemStatementProps> = ({ className }) => {
             </p>
             <div className="space-y-4 text-lg">
               <p className="leading-relaxed">
-                <span className="text-purple-100 font-semibold">HeyWeekly uses your voice</span> to write your newsletter.
+                <span className="text-purple-100 font-semibold">Findre uses your voice</span> to write your newsletter.
                 <br />
                 <br />
                 We track 

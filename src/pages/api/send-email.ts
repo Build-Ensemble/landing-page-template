@@ -17,10 +17,10 @@ export default async function handler(
     }
 
     await GoogleAuthService.sendEmail(
-      'admin@tryHeyWeekly.com',
-      'admin@HeyWeekly-technologies.com',
-      'New registration on HeyWeekly',
-      `New registration on HeyWeekly ReWeekly: ${email}`
+      'admin@tryFindre.com',
+      'admin@Findre-technologies.com',
+      'New registration on Findre',
+      `New registration on Findre ReWeekly: ${email}`
     );
     
     return res.status(200).json({ success: true });
