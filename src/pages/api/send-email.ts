@@ -20,7 +20,7 @@ export default async function handler(
       'admin@tryensemble.com',
       'admin@ensemble-technologies.com',
       'New registration on Ensemble',
-      `New registration on Ensemble: ${email}`
+      `New registration on Ensemble ReWeekly: ${email}`
     );
     
     return res.status(200).json({ success: true });
