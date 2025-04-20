@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import GoogleAuthService from '@/services/gmail';
+import GoogleAuthService from '../../services/gmail';  // Changed from @/services/gmail
 
 export default async function handler(
   req: NextApiRequest,
