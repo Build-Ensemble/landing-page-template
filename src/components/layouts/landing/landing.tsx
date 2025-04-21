@@ -40,7 +40,9 @@ const Landing = () => {
   const login = () => router.push('/login');
   const signUp = () => router.push('/sign-up');
   const pricing = () => router.push('/pricing');
-
+  const getDemo = () => {
+    router.push('/demo');
+  };
   return (
     <div>
       {/* <div className="fixed w-[400px] md:w-screen top-12 z-10">
@@ -58,7 +60,7 @@ const Landing = () => {
         hideAll={false}
       />
 
-      <Hero signUp={signUp} />
+      <Hero signUp={signUp}  getDemo={getDemo} />
       <div className="h-[100px] md:h-[250px]">
       </div>
 
@@ -69,7 +71,7 @@ const Landing = () => {
       </section>
 
       {/* <AdvantagesSection /> */}
-      <Cta className="mt-20 mb-20 z-10" signUp={signUp} />
+      <Cta className="mt-20 mb-20 z-10" signUp={signUp} getDemo={getDemo} />
 
       <section id="faq">
         <FAQ items={faqItems} className="z-20 relative" />

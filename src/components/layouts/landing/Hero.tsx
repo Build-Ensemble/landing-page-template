@@ -31,8 +31,12 @@ const avatars = [
 
 const HeroSection = ({
   signUp,
+  getDemo
 }: {
   signUp: () => void;
+  getDemo: () => void;
+
+  
 }) => {
   return (
     <section className="relative pt-20 md:pt-40 pb-20 md:pb-40 overflow-visible bg-gradient-to-b from-accent to-white min-h-[60vh] flex items-center">
@@ -82,6 +86,8 @@ const HeroSection = ({
             <Button
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-7 text-xl z-20"
+              onClick={getDemo}
+
             >
               <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
               <p>Get a FREE consultation</p>
