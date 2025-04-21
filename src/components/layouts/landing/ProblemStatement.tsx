@@ -5,9 +5,10 @@ import { BadgeCheck } from 'lucide-react';
 
 interface ProblemStatementProps {
   className?: string;
+  getDemo?: () => void;  
 }
 
-const ProblemStatement: React.FC<ProblemStatementProps> = ({ className }) => {
+const ProblemStatement: React.FC<ProblemStatementProps> = ({ className ,   getDemo}) => {
   return (
     <div className={cn("max-w-4xl mx-auto bg-[#1a1033] text-white py-20 px-8 rounded-2xl shadow-[0_0_50px_-12px] shadow-purple-500/30 z-20", className)}>
       <div className="max-w-3xl mx-auto space-y-8">
@@ -67,7 +68,9 @@ const ProblemStatement: React.FC<ProblemStatementProps> = ({ className }) => {
         <Button
           variant="outline"
           className="border-white/30 hover:bg-white hover:text-[#1a1033] px-10 py-7 text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full max-w-md text-purple-800"
-        >
+          onClick={getDemo}
+
+       >
           <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
           Book a Demo
         </Button>

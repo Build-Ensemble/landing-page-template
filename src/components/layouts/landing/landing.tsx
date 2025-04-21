@@ -64,7 +64,7 @@ const Landing = () => {
       <div className="h-[100px] md:h-[250px]">
       </div>
 
-      <ProblemStatement className="relative" />
+      <ProblemStatement className="relative"  getDemo={getDemo} />
 
       <section className="bg-white flex flex-col items-center justify-center pt-20" id="features">
         <FeaturesSection />
