@@ -35,38 +35,38 @@ export const Cta = ({
     )}>
       <div className="max-w-5xl mx-auto">
         <Card className={cn(
-          'bg-gradient-to-br from-[#1a1033]/95 to-[#1a1033]/90 backdrop-blur-xl border-purple-900/20 shadow-xl p-12 relative overflow-hidden',
+          'bg-gradient-to-br from-[#1a1033]/95 to-[#1a1033]/90 backdrop-blur-xl border-purple-900/20 shadow-xl p-6 sm:p-12 relative overflow-hidden',
           "before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-500/10 before:to-transparent before:pointer-events-none",
           className
         )}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Column - Title */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 sm:gap-6">
               <CardHeader className="p-0">
-                <CardTitle className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/90 text-transparent bg-clip-text select-text">
+                <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/90 text-transparent bg-clip-text select-text">
                   Ready to Up Your Newsletter Game?
                 </CardTitle>
               </CardHeader>
-              <p className="text-white/80 text-lg">Send your newsletter out on time, every time.</p>
+              <p className="text-white/80 text-base sm:text-lg">Send your newsletter out on time, every time.</p>
             </div>
 
             {/* Right Column - Buttons */}
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <div className="flex flex-col gap-3 sm:gap-4">
                 <MovingBorderButton
                   borderRadius="0.75rem"
                   className="relative bg-gradient-to-r from-primary to-primary/90 text-white flex items-center justify-center hover:from-primary/90 hover:to-primary transition-all duration-300"
-                  containerClassName="h-[74px] w-full"
+                  containerClassName="h-[60px] sm:h-[74px] w-full"
                   borderClassName="opacity-20"
                   duration={2500}
                   onClick={signUp}
                 >
-                  <div className="px-10 py-6 flex items-center w-full justify-center gap-2">
-                    <SparklesIcon className="mr-3" size={22} strokeWidth={2.5} />
-                    <span className="text-xl font-semibold tracking-wide">
+                  <div className="px-4 sm:px-10 py-4 sm:py-6 flex items-center w-full justify-center gap-2">
+                    <SparklesIcon className="mr-1" size={18} strokeWidth={2.5} />
+                    <span className="text-base sm:text-lg font-semibold tracking-wide">
                       Sign up
                     </span>
-                    <span className="text-sm font-bold ml-1.5 opacity-80">
+                    <span className="text-xs sm:text-sm font-bold ml-1.5 opacity-80">
                       {' '}
                       - it's free
                     </span>
@@ -75,14 +75,14 @@ export const Cta = ({
                 
                 <Button
                   variant="outline"
-                  className="border-white/30 text-purple-800 hover:bg-white hover:text-[#1a1033] px-10 py-7 text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full"
+                  className="border-white/30 text-purple-800 hover:bg-white hover:text-[#1a1033] px-4 sm:px-10 py-4 sm:py-7 text-base sm:text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full"
                   onClick={getDemo}
                 >
-                  <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
+                  <BadgeCheck className="mr-2 sm:mr-3" size={20} strokeWidth={3} />{' '}
                   <p>Book a Demo</p>
                 </Button>
               </div>
-              <p className="text-sm text-white/80 select-text font-medium text-center">No credit card required • 14-day free trial</p>
+              <p className="text-xs sm:text-sm text-white/80 select-text font-medium text-center">No credit card required • 14-day free trial</p>
             </div>
           </div>
         </Card>

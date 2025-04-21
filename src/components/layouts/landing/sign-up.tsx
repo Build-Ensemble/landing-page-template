@@ -11,13 +11,14 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectItem, SelectTrigger, SelectContent, SelectValue } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SignUp = ({ className }: { className?: string }) => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [frequency, setFrequency] = useState('weekly');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState<{
     email?: string;
@@ -103,7 +104,7 @@ const SignUp = ({ className }: { className?: string }) => {
         throw new Error(data.error || 'Something went wrong');
       }
       
-      setSuccess(true);
+      router.push('/sign-up/success');
     } catch (err: any) {
       setError(err.message || 'Failed to submit form. Please try again.');
     } finally {
@@ -176,11 +177,6 @@ const SignUp = ({ className }: { className?: string }) => {
               {loading ? 'Submitting...' : 'Get Started'}
             </Button>
           </form>
-          {success && (
-            <p className="text-green-500">
-              Registered successfully, we will be in touch soon!
-            </p>
-          )}
           {error && <p className="text-red-500">{error}</p>}
         </CardContent>
       </Card>

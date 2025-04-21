@@ -10,17 +10,25 @@ export default async function handler(
   }
 
   try {
-    const { email } = req.body;
+    const { email, phone, frequency } = req.body;
     
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
     }
 
     await GoogleAuthService.sendEmail(
-      'admin@tryHeyWeekly.com',
-      'admin@HeyWeekly-technologies.com',
-      'New registration on HeyWeekly',
-      `New registration on HeyWeekly ReWeekly: ${email}`
+      'HeyWeekly',
+      'admin@ensemble-technologies.com',
+      `New Registration: ${email}`,
+      `
+        New registration on HeyWeekly:
+
+        Email: ${email}
+        Phone: ${phone}
+        Newsletter Frequency: ${frequency}
+
+        Timestamp: ${new Date().toLocaleString()}
+      `
     );
     
     return res.status(200).json({ success: true });

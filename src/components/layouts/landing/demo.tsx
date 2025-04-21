@@ -1,7 +1,7 @@
 export default function DemoPage() {
   return (
     <main className="flex-1">
-      <section className="py-20">
+      <section className="py-10">
         <div className="container px-4 lg:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col items-start justify-center space-y-4 text-left">
@@ -10,8 +10,7 @@ export default function DemoPage() {
                   Schedule a Demo
                 </h1>
                 <p className="max-w-[500px] text-muted-foreground md:text-xl/relaxed">
-                  See how HeyWeekly can help turn you automate your financial
-                  document workflows.
+                  See how HeyWeekly can make you increase touchpoints with your clients.
                 </p>
               </div>
             </div>
