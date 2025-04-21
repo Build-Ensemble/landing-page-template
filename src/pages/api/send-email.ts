@@ -10,7 +10,7 @@ export default async function handler(
   }
 
   try {
-    const { email } = req.body;
+    const { email, phone, propertySize, location, details, timestamp } = req.body;
     
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
@@ -20,7 +20,14 @@ export default async function handler(
       'hello@findre.co',
       'hello@findre.co',
       'New registration on Findre',
-      `New registration on Findre ReWeekly: ${email}`
+      `New registration on Findre:
+      
+        Email: ${email}
+        Phone: ${phone || 'Not provided'}
+        Property Size: ${propertySize}
+        Location: ${location || 'Not provided'}
+        Additional Details: ${details || 'None provided'}
+        Timestamp: ${timestamp}`
     );
     
     return res.status(200).json({ success: true });
