@@ -34,12 +34,6 @@ const SignUp = ({ className }: { className?: string }) => {
     return emailRegex.test(email);
   };
 
-  const validatePhone = (phone: string) => {
-    // Remove all non-digit characters for validation
-    const digitsOnly = phone.replace(/\D/g, '');
-    return digitsOnly.length >= 10;
-  };
-
   const validateForm = () => {
     const errors: { email?: string; phone?: string; location?: string } = {};
 
@@ -47,16 +41,6 @@ const SignUp = ({ className }: { className?: string }) => {
       errors.email = 'Email is required';
     } else if (!validateEmail(email)) {
       errors.email = 'Please enter a valid email address';
-    }
-
-    if (!phone) {
-      errors.phone = 'Phone number is required';
-    } else if (!validatePhone(phone)) {
-      errors.phone = 'Please enter a valid phone number';
-    }
-
-    if (!location) {
-      errors.location = 'Location is required';
     }
 
     setValidationErrors(errors);
@@ -191,7 +175,7 @@ const SignUp = ({ className }: { className?: string }) => {
               <Label>Target Location</Label>
               <Input
                 type="text"
-                placeholder="e.g., Westmount, QC, Brossard, QC, Laval, QC"
+                placeholder="e.g., Westmount, Brossard, Laval, ..."
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className={validationErrors.location ? 'border-red-500' : ''}

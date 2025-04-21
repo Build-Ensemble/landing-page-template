@@ -29,7 +29,7 @@ const SuccessPage = () => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed">
-              We've received your information and will be in touch soon to show you how Findre can transform your newsletter workflow.
+              We've received your information and will be in touch soon.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
