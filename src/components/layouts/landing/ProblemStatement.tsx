@@ -71,7 +71,7 @@ const ProblemStatement: React.FC<ProblemStatementProps> = ({ className , getDemo
           onClick={getDemo}
         >
           <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
-          Book a Demo
+          Request a Free Sample Today
         </Button>
       </div>
     </div>
