@@ -29,10 +29,6 @@ const faqItems = [
     question: "How do you get my local real estate market insights?",
     answer: "We use a combination of local events, news, and market trends to provide you with the most accurate and up-to-date insights.",
   },
-  {
-    question: "Who is the team behind this?",
-    answer: "We're a team of experienced professionals in AI, real estate, and newsletter writing, committed to simplifying real estate newsletter workflows.",
-  },
 ];
 
 const Landing = () => {
