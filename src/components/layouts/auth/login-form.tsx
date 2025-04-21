@@ -31,7 +31,9 @@ export function LoginForm({
     const password = formData.get('password') as string;
     try {
       await onLogin(email, password);
-      setErrorMessage(null);
+      
+      // error by default remove when adding login
+      setErrorMessage("Account not found. Please sign up.");
     } catch (error: any) {
       setErrorMessage(error.message);
     }
