@@ -18,9 +18,13 @@ import { BadgeCheck } from "lucide-react"
 export const Cta = ({
   className,
   signUp,
+  getDemo,
+
 }: {
   className: string;
   signUp: () => void;
+  getDemo: () => void;
+
 }) => {
   const router = useRouter();
   return (
@@ -72,6 +76,7 @@ export const Cta = ({
                 <Button
                   variant="outline"
                   className="border-white/30 text-purple-800 hover:bg-white hover:text-[#1a1033] px-10 py-7 text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full"
+                  onClick={getDemo}
                 >
                   <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
                   <p>Book a Demo</p>
