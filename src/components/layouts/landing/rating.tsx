@@ -27,7 +27,7 @@ export const Rating: React.FC<RatingProps> = ({
       </div>
       <div className="flex items-center gap-2">
         <span className="text-sm font-medium text-gray-700 hidden md:block">
-          Loved by Real Estate Professionals
+          Loved by Acquisitions Professionals 
         </span>
         <div className="flex">
           {[1, 2, 3, 4].map((star) => (

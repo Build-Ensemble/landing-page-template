@@ -48,12 +48,12 @@ const HeroSection = ({
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl z-20 relative">
-            Real Estate Newsletters on Autopilot
+          Start the Conversation Before the Listing
           </h1>
           
           {/* Subheading - centered */}
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto z-20 relative">
-            Stay top of mind with your clients and prospects with an insight-driven newsletter, personalized to your style.
+          Built for commercial brokers and real estate investors who need a consistent edge in deal sourcing. We surface multi-family owners before they list — so you get in early.
           </p>
                 {/* Rating component - centered */}
           <div className="mb-4 z-20">
@@ -108,7 +108,7 @@ const HeroSection = ({
             <div className="flex items-center">
               <CheckCircle className="h-6 w-6 text-secondary mr-2" />
               <span className="text-base font-medium">
-                14 days free trial
+                free sample
               </span>
             </div>
           </div>

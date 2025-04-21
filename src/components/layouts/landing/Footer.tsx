@@ -7,8 +7,8 @@ export const Footer = ({ className }: { className?: string }) => {
 
       <section className="container py-8 border-t border-gray-200 mt-10">
         <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8 ">
-          <div className="col-span-full xl:col-span-2 flex items-center gap-3 mb-6 xl:mb-0">
-            <Icons.logo className="h-8 w-auto" />
+          <div className="col-span-full xl:col-span-2 flex items-center gap-3 mb-6 xl:mb-0 size-10">
+            <Icons.logo className="h-10 w-auto" />
             <a
               rel="noreferrer noopener"
               href="/"
@@ -24,7 +24,7 @@ export const Footer = ({ className }: { className?: string }) => {
             <h3 className="font-bold text-lg mb-2">Connect With Us</h3>
             <a
               rel="noreferrer noopener"
-              href="https://www.linkedin.com/company/Findre-books/"
+              href="https://www.linkedin.com/company/goFindre/"
               target="_blank"
               className="opacity-70 hover:opacity-100 transition-opacity flex items-center gap-2 text-sm hover:text-primary"
             >
@@ -37,7 +37,7 @@ export const Footer = ({ className }: { className?: string }) => {
             <h3 className="font-bold text-lg mb-2">Company</h3>
 
             <a
-              href="mailto:simon@tryFindre.com?subject=Findre%20inquiry"
+              href="mailto:hello@findre.co?subject=Findre%20inquiry"
               className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-opacity"
             >
               Contact

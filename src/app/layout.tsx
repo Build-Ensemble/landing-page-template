@@ -11,7 +11,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel="icon" href="/icon.ico" />
         <meta
           name="description"
-          content="Real Estate Newsletters on Autopilot. Stay top of mind with your clients and prospects with an insight-driven newsletter, personalized to your style."
+          content="Find Off-Market Sellers Before Anyone Else. Identify high-likelihood sellers and get verified owner contacts"
         />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-5QHJNN7N5R"

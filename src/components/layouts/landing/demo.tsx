@@ -10,8 +10,7 @@ export default function DemoPage() {
                   Schedule a Demo
                 </h1>
                 <p className="max-w-[500px] text-muted-foreground md:text-xl/relaxed">
-                  See how Findre can help turn you automate your financial
-                  document workflows.
+                  See how Findre can help you find off-market sellers before anyone else.
                 </p>
               </div>
             </div>

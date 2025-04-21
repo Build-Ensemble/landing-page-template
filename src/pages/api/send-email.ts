@@ -17,8 +17,8 @@ export default async function handler(
     }
 
     await GoogleAuthService.sendEmail(
-      'admin@tryFindre.com',
-      'admin@Findre-technologies.com',
+      'hello@findre.co',
+      'hello@findre.co',
       'New registration on Findre',
       `New registration on Findre ReWeekly: ${email}`
     );

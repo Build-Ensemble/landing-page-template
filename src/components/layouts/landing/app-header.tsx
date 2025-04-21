@@ -36,7 +36,7 @@ export function AppHeader() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="https://Findre.com" legacyBehavior passHref>
+          <Link href="https://findre.co" legacyBehavior passHref>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle()}
               target="_blank"

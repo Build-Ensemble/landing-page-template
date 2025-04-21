@@ -14,16 +14,16 @@ import ProblemStatement from './ProblemStatement';
 
 const faqItems = [
   {
-    question: "How easy is it to setup?",
-    answer: "Our platform is designed for easy setup. You can be up and running in minutes with our guided onboarding process and intuitive interface.",
+    question: "How accurate is the owner contact info?",
+    answer: "We cross-reference multiple sources to deliver verified, enriched contacts — phone + email where possible.",
   },
   {
-    question: "Do you have a refund policy?",
-    answer: "Yes, we offer a 30-day money-back guarantee if you're not completely satisfied with our service.",
+    question: "Who is this for?",
+    answer: "Brokers and acquisition teams focused on closing off-market deals",
   },
   {
-    question: "How do I track my newsletter's performance?",
-    answer: "You can track your newsletter's performance by using our analytics dashboard. You can see how many people opened your newsletter, clicked on links, and more.",
+    question: "Can I customize by location or asset type?",
+    answer: "Yes. We filter by borough, number of units, recent events, and more.",
   },
   {
     question: "How do you get my local real estate market insights?",
@@ -61,8 +61,6 @@ const Landing = () => {
       />
 
       <Hero signUp={signUp}  getDemo={getDemo} />
-      <div className="h-[100px] md:h-[250px]">
-      </div>
 
       <ProblemStatement className="relative"  getDemo={getDemo} />
 

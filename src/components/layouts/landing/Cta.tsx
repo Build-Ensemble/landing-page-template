@@ -44,10 +44,10 @@ export const Cta = ({
             <div className="flex flex-col gap-6">
               <CardHeader className="p-0">
                 <CardTitle className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/90 text-transparent bg-clip-text select-text">
-                  Ready to Up Your Newsletter Game?
+                  Ready to Up Your Prospecting Game?
                 </CardTitle>
               </CardHeader>
-              <p className="text-white/80 text-lg">Send your newsletter out on time, every time.</p>
+              <p className="text-white/80 text-lg">Supercharge your prospecting with targeted owner insights.</p>
             </div>
 
             {/* Right Column - Buttons */}

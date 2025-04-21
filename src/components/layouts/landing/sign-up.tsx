@@ -9,19 +9,24 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectItem, SelectTrigger, SelectContent, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SignUp = ({ className }: { className?: string }) => {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [frequency, setFrequency] = useState('weekly');
+  const [propertySize, setPropertySize] = useState('8+');
+  const [location, setLocation] = useState('');
+  const [details, setDetails] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState<{
     email?: string;
     phone?: string;
+    location?: string;
   }>({});
 
   const validateEmail = (email: string) => {
@@ -36,7 +41,7 @@ const SignUp = ({ className }: { className?: string }) => {
   };
 
   const validateForm = () => {
-    const errors: { email?: string; phone?: string } = {};
+    const errors: { email?: string; phone?: string; location?: string } = {};
 
     if (!email) {
       errors.email = 'Email is required';
@@ -48,6 +53,10 @@ const SignUp = ({ className }: { className?: string }) => {
       errors.phone = 'Phone number is required';
     } else if (!validatePhone(phone)) {
       errors.phone = 'Please enter a valid phone number';
+    }
+
+    if (!location) {
+      errors.location = 'Location is required';
     }
 
     setValidationErrors(errors);
@@ -87,7 +96,9 @@ const SignUp = ({ className }: { className?: string }) => {
         body: JSON.stringify({
           email,
           phone,
-          frequency,
+          propertySize,
+          location,
+          details,
           timestamp: new Date().toISOString()
         }),
       });
@@ -103,7 +114,8 @@ const SignUp = ({ className }: { className?: string }) => {
         throw new Error(data.error || 'Something went wrong');
       }
       
-      setSuccess(true);
+      // Redirect to success page after successful submission
+      router.push('/sign-up/success');
     } catch (err: any) {
       setError(err.message || 'Failed to submit form. Please try again.');
     } finally {
@@ -124,11 +136,11 @@ const SignUp = ({ className }: { className?: string }) => {
             See Findre in action
           </CardTitle>
           <CardDescription className="text-center">
-            We'd love to show you how Findre's newsletters can boost your retention and referrals.
+            We'd love to show you how Findre's can help you find off-market deals before anyone else.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <Label>Company email</Label>
               <Input
@@ -155,32 +167,54 @@ const SignUp = ({ className }: { className?: string }) => {
                 <p className="text-sm text-red-500">{validationErrors.phone}</p>
               )}
             </div>
-            <div className="mb-2">
-              <label htmlFor="frequency" className="block text-sm font-medium mb-1">Newsletter Frequency</label>
+            
+            <div className="flex flex-col gap-2">
+              <Label>Desired Property Size</Label>
               <Select 
-                defaultValue="weekly"
-                onValueChange={setFrequency}
+                defaultValue="8+"
+                onValueChange={setPropertySize}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a newsletter frequency" />
+                  <SelectValue placeholder="Select property size" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="weekly">Weekly</SelectItem>
-                  <SelectItem value="biweekly">Bi-weekly</SelectItem>
-                  <SelectItem value="monthly">Monthly</SelectItem>
-                  <SelectItem value="quarterly">Quarterly</SelectItem>
+                  <SelectItem value="8+">8+ units</SelectItem>
+                  <SelectItem value="20+">20+ units</SelectItem>
+                  <SelectItem value="50+">50+ units</SelectItem>
+                  <SelectItem value="100+">100+ units</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            <Button type="submit" disabled={loading}>
+
+            <div className="flex flex-col gap-2">
+              <Label>Target Location</Label>
+              <Input
+                type="text"
+                placeholder="e.g., Westmount, QC, Brossard, QC, Laval, QC"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className={validationErrors.location ? 'border-red-500' : ''}
+              />
+              {validationErrors.location && (
+                <p className="text-sm text-red-500">{validationErrors.location}</p>
+              )}
+              <p className="text-sm text-gray-500">Enter city and state, or specific neighborhood</p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label>Additional Details (Optional)</Label>
+              <Textarea
+                placeholder="Tell us more about your property search criteria."
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+              />
+            </div>
+
+            <Button type="submit" disabled={loading} className="mt-4">
               {loading ? 'Submitting...' : 'Get Started'}
             </Button>
           </form>
-          {success && (
-            <p className="text-green-500">
-              Registered successfully, we will be in touch soon!
-            </p>
-          )}
           {error && <p className="text-red-500">{error}</p>}
         </CardContent>
       </Card>

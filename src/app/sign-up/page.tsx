@@ -12,7 +12,7 @@ export default function SignUpPage() {
       <div className="flex flex-col gap-4 p-6 md:p-10 bg-background">
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="/" className="flex items-center gap-2 font-medium">
-            <div className="flex h-6 w-6 items-center justify-center">
+            <div className="flex size-10 items-center justify-center">
               <Icons.logo />
             </div>
             Findre

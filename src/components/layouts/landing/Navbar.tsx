@@ -60,7 +60,7 @@ export const Navbar = ({
       <div className="flex items-center">
         <a href="/">
           <div className="flex items-center gap-2">
-            <div className="flex aspect-square size-6 items-center justify-center">
+            <div className="flex aspect-square size-8 items-center justify-center">
               <Icons.logo />
             </div>
             <span className="text-base font-semibold">Findre</span>

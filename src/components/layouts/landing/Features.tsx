@@ -1,50 +1,50 @@
 import React from 'react';
 import {
   Building2,
-  LineChart,
-  Store,
-  Home,
-  Newspaper,
-  Trophy,
-  BarChart,
-  TrendingUp
+  Contact2,
+  LocateIcon,
+  EyeIcon,
+  BadgeCheck,
+  Bell,
+  Map
 } from 'lucide-react';
 
 const features = [
   {
+    icon: <Map className="h-8 w-8 text-primary" />,
+    title: "See Who Owns What",
+    description:
+      'Stop guessing. We show you who owns each commercial property — whether it’s a person, company, or trust.',
+  },
+  {
+    icon: <Contact2 className="h-8 w-8 text-primary" />,
+    title: 'Get Verified Contacts',
+    description:
+      'No more dead-end numbers or digging through old directories. We give you the phone numbers and emails that actually work.',
+  },
+  {
     icon: <Building2 className="h-8 w-8 text-primary" />,
-    title: "Events",
+    title: 'Spot Properties That May Be for Sale',
     description:
-      'Showcase local weekend events, community gatherings, and neighborhood activities that matter to your clients.',
+      'We track signs like ownership changes and mortgage activity to help you find buildings before they hit the market.',
   },
   {
-    icon: <LineChart className="h-8 w-8 text-primary" />,
-    title: 'Monthly Market Stats',
+    icon: <Bell className="h-8 w-8 text-primary" />,
+    title: 'Stay Notified When Things Change',
     description:
-      "Previous month's housing statistics, price trends, and market analysis - automatically compiled and explained.",
+      'We keep an eye on your target properties and notify you when there’s a shift — like a new owner or updated info.',
   },
   {
-    icon: <Store className="h-8 w-8 text-primary" />,
-    title: 'Local Business Spotlight',
+    icon: <EyeIcon className="h-8 w-8 text-primary" />,
+    title: 'Save Hours Every Week',
     description:
-      'Highlight new and notable businesses in your area, keeping your newsletter locally relevant and engaging.',
+      'No more manual searching or data entry. We handle the research so you can focus on closing deals.',
   },
   {
-    icon: <Home className="h-8 w-8 text-primary" />,
-    title: 'Featured Listing',
-    description: 'Showcase your best listing of the week or month with professional descriptions and key highlights.',
-  },
-  {
-    icon: <Newspaper className="h-8 w-8 text-primary" />,
-    title: 'National RE News',
+    icon: <BadgeCheck className="h-8 w-8 text-primary" />,
+    title: 'Built for Dealmakers',
     description:
-      'Curated national real estate news and trends that impact your local market, explained in simple terms.',
-  },
-  {
-    icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: 'Market Insights',
-    description:
-      'Eye-catching infographics and reports that break down complex market data into digestible insights.',
+      'Everything is designed for brokers and acquisition teams who want better data, faster outreach, and less busywork.',
   },
 ];
 
@@ -54,10 +54,10 @@ const FeaturesSection = () => {
       <div className="container px-4 mx-auto z-20 relative">
         <div className="text-center max-w-3xl mx-auto mb-16 z-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 z-20">
-            Your Complete Newsletter, Automated
+            Get in Front of Owners Before Anyone Else
           </h2>
           <p className="text-lg text-gray-600 z-20">
-            Every piece of content you need, written in your voice and personalized for your market.
+            We help you spot opportunities and connect with the right people—without spending hours on Google Maps.
           </p>
         </div>
 
