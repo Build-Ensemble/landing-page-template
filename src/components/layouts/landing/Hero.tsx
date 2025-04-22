@@ -53,7 +53,8 @@ const HeroSection = ({
           
           {/* Subheading - centered */}
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto z-20 relative">
-          Built for commercial brokers and real estate investors who need a consistent edge in deal sourcing. We surface multi-family owners before they list — so you get in early.
+          Built for brokers and investors who win by getting in first.
+Filter multifamily assets by ownership signals and connect directly with decision-makers—before the market sees the deal.
           </p>
                 {/* Rating component - centered */}
           <div className="mb-4 z-20">

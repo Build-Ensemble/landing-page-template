@@ -49,15 +49,13 @@ const ProblemStatement: React.FC<ProblemStatementProps> = ({ className , getDemo
           <div className="mt-12 space-y-6">
             <h3 className="text-2xl font-bold text-purple-100">The Better Way:</h3>
             <p className="text-xl leading-relaxed text-purple-100">
-              Findre automates your prospecting — and verifies every contact.
+              Findre gives you control over your deal flow.
             </p>
             <div className="space-y-4 text-lg">
               <p className="leading-relaxed">
-                <span className="text-purple-100 font-semibold">We scan commercial properties at scale</span> and surface seller flags you care about.
+                <span className="text-purple-100 font-semibold">No more scraping, guessing, or waiting on stale lead lists.</span>
                 <br /><br />
-                <span className="text-purple-100 font-semibold">Each lead comes with ownership info, emails, and phone numbers</span> — already verified, already ready.
-                <br /><br />
-                Weekly drops. No scraping. No cold Googling.
+                <span className="text-purple-100 font-semibold">Use real-time filters to search commercial properties by location, asset type, and ownership signals</span> — then get verified owner contact info in seconds.
               </p>
             </div>
           </div>
@@ -67,11 +65,11 @@ const ProblemStatement: React.FC<ProblemStatementProps> = ({ className , getDemo
       <div className="w-full flex justify-center mt-8">
         <Button
           variant="outline"
-          className="border-white/30 hover:bg-white hover:text-[#1a1033] px-10 py-7 text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full max-w-md text-purple-800"
+          className="text-;g border-white/30 hover:bg-white hover:text-[#1a1033] px-10 py-7 md:text-xl transition-all duration-300 select-none hover:scale-[1.02] w-full max-w-md text-purple-800"
           onClick={getDemo}
         >
           <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
-          Request a Free Sample Today
+          Get a Sample Contact List Today
         </Button>
       </div>
     </div>
