@@ -48,7 +48,7 @@ const HeroSection = ({
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl z-20 relative">
-          Get in Front of Multi-Family Owners Before Anyone Else
+          Get in Front of Distressed Property Owners Before Anyone Else
           </h1>
           
           {/* Subheading - centered */}

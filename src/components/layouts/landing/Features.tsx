@@ -20,7 +20,7 @@ const features = [
     icon: <Contact2 className="h-8 w-8 text-primary" />,
     title: 'Get Verified Contacts',
     description:
-      'No more dead-end numbers or digging through old directories. We give you the phone numbers and emails that actually work.',
+      'No more dead-end numbers or digging through old directories. We verify owner contact information and flag properties with missed tax payments to help you identify motivated sellers.',
   },
   {
     icon: <Building2 className="h-8 w-8 text-primary" />,
