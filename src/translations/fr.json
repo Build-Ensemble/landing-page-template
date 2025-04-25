@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Soyez le premier à contacter les propriétaires de biens en difficulté",
-    "subtitle": "Conçu pour les courtiers et les investisseurs qui gagnent en étant les premiers. Filtrez les actifs multifamiliaux selon les signaux de propriété et connectez-vous directement avec les décideurs — avant que le marché ne voie l'affaire.",
+    "title": "Recevez une Liste de Propriétaires Hors Marché au Québec",
+    "subtitle": "Filtrez les propriétés multi selon les signaux de propriété et connectez-vous directement avec les propriétaires.",
     "signUp": {
       "text": "S'inscrire",
       "free": "c'est gratuit"
@@ -11,7 +11,7 @@
     }
   },
   "problemStatement": {
-    "title": "Vous avez du mal à trouver les propriétaires ?",
+    "title": "Vous avez du mal à trouver les propriétaires des bâtiments que vous voulez?",
     "intro": {
       "firstPart": "Vous n'êtes pas seul.",
       "secondPart": "Les investisseurs immobiliers et les équipes d'acquisition perdent d'innombrables heures à chercher dans les registres publics, à faire des appels à froid et à traquer les informations sur la propriété.",
