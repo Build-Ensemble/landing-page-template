@@ -60,6 +60,9 @@ const Pricing = () => {
        <Navbar
             className="backdrop-blur-md fixed top-0 left-0 right-0 z-50 max-w-screen-xl mx-auto"
             hideAll={false}
+            login={() => {}}
+            signUp={() => {}}
+            pricing={() => {}}
           />
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       <div className="max-w-7xl mx-auto px-4 py-20">
