@@ -8,7 +8,7 @@ export default function Demo() {
   return (
     <div className="flex flex-col items-center justify-center h-screen background">
       <div className="h-screen max-w-screen-xl mx-auto ">
-        <Navbar hideAll={true} />
+        <Navbar hideAll={true} login={() => {}} signUp={() => {}} pricing={() => {}} />
         <div className="flex flex-col items-center justify-center bg-white rounded-lg shadow-md py-20 overflow-auto my-auto">
           <DemoPage />
         </div>
