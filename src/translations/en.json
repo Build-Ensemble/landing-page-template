@@ -1,0 +1,176 @@
+{
+  "hero": {
+    "title": "Get in Front of Distressed Property Owners Before Anyone Else",
+    "subtitle": "Built for brokers and investors who win by getting in first. Filter multifamily assets by ownership signals and connect directly with decision-makers—before the market sees the deal.",
+    "signUp": {
+      "text": "Sign up",
+      "free": "it's free"
+    },
+    "demo": {
+      "text": "Get a FREE consultation"
+    }
+  },
+  "problemStatement": {
+    "title": "Struggling to Find Property Owners?",
+    "intro": {
+      "firstPart": "You're not alone.",
+      "secondPart": "Real estate investors and acquisition teams waste countless hours searching through public records, making cold calls, and chasing down property ownership information.",
+      "thirdPart": "It's time-consuming, frustrating, and inefficient",
+      "fourthPart": "— and worst of all, it's costing you valuable deals."
+    },
+    "painPoints": {
+      "research": {
+        "icon": "🔍",
+        "text": "Hours spent\nresearching owners"
+      },
+      "calls": {
+        "icon": "📞",
+        "text": "Dead-end calls\n& wrong contacts"
+      },
+      "opportunities": {
+        "icon": "💸",
+        "text": "Missed opportunities\nto competitors"
+      }
+    },
+    "solution": {
+      "title": "The Better Way:",
+      "subtitle": "Findre gives you direct access to verified property owners.",
+      "description": {
+        "firstPart": "No more wasted time on outdated records or cold calling.",
+        "secondPart": "Access accurate owner information, contact details, and property insights",
+        "thirdPart": "— all in one place, instantly."
+      }
+    },
+    "cta": "Get Owner Contact List Today"
+  },
+  "features": {
+    "title": "Everything You Need to Find Property Owners",
+    "description": "Our platform combines powerful data with intuitive tools to help you identify and connect with property owners faster than ever.",
+    "items": [
+      {
+        "title": "See Who Owns What",
+        "description": "Stop guessing. We show you who owns each commercial property — whether it's a person, company, or trust."
+      },
+      {
+        "title": "Get Verified Contacts",
+        "description": "No more dead-end numbers or digging through old directories. We verify owner contact information and flag properties with missed tax payments to help you identify motivated sellers."
+      },
+      {
+        "title": "Spot Properties That May Be for Sale",
+        "description": "We track signs like ownership changes and mortgage activity to help you find buildings before they hit the market."
+      },
+      {
+        "title": "Stay Notified When Things Change",
+        "description": "We keep an eye on your target properties and notify you when there's a shift — like a new owner or updated info."
+      },
+      {
+        "title": "Save Hours Every Week",
+        "description": "No more manual searching or data entry. We handle the research so you can focus on closing deals."
+      },
+      {
+        "title": "Built for Dealmakers",
+        "description": "Everything is designed for brokers and acquisition teams who want better data, faster outreach, and less busywork."
+      }
+    ]
+  },
+  "header": {
+    "language": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How accurate is the owner contact info?",
+        "answer": "We cross-reference multiple sources to deliver verified, enriched contacts — phone + email where possible."
+      },
+      {
+        "question": "Who is this for?",
+        "answer": "Brokers and acquisition teams focused on closing off-market deals"
+      },
+      {
+        "question": "Can I customize by location or asset type?",
+        "answer": "Yes. We filter by borough, number of units, recent events, and more."
+      },
+      {
+        "question": "How do you get my local real estate market insights?",
+        "answer": "We use a combination of local events, news, and market trends to provide you with the most accurate and up-to-date insights."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Up Your Prospecting Game?",
+    "subtitle": "Supercharge your prospecting with targeted owner insights.",
+    "signUp": {
+      "text": "Sign up",
+      "free": "it's free"
+    },
+    "demo": {
+      "text": "Book a Demo"
+    },
+    "footer": "No credit card required • 14-day free trial"
+  },
+  "footer": {
+    "connect": "Connect With Us",
+    "company": "Company",
+    "contact": "Contact",
+    "copyright": "© {year} Findre. All rights reserved."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "description": "Enter your email below to login to your account",
+      "email": "Email",
+      "emailPlaceholder": "m@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot your password?",
+      "resetPassword": "Reset it here",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "accountNotFound": "Account not found. Please sign up."
+    },
+    "signup": {
+      "title": "Create Account",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "seeInAction": "Receive your list today",
+      "description": "We'd love to show you how Findre can help you find off-market deals before anyone else.",
+      "emailRequired": "Email is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidResponse": "Server returned an invalid response",
+      "somethingWentWrong": "Something went wrong",
+      "submitError": "Failed to submit form. Please try again.",
+      "emailPlaceholder": "John@Doe.com",
+      "phone": "Phone number",
+      "phonePlaceholder": "(123) 456-7890",
+      "propertySize": "Desired Property Size",
+      "selectPropertySize": "Select property size",
+      "propertySize8": "8+ units",
+      "propertySize20": "20+ units",
+      "propertySize50": "50+ units",
+      "propertySize100": "100+ units",
+      "propertySizeOther": "Other",
+      "location": "Target Location",
+      "locationPlaceholder": "e.g., Westmount, Brossard, Laval, ...",
+      "locationHelp": "Enter city and state, or specific neighborhood",
+      "additionalDetails": "Additional Details (Optional)",
+      "detailsPlaceholder": "Tell us more about your property search criteria.",
+      "submitting": "Submitting...",
+      "getStarted": "Get Started"
+    },
+    "success": {
+      "title": "Thank you for registering!",
+      "description": "We have received your information and will contact you shortly.",
+      "returnHome": "Return to Home",
+      "contact": "If you have any questions, please feel free to contact us:"
+    }
+  }
+} 

@@ -5,9 +5,13 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { MovingBorderButton } from '@/components/ui/moving-border';
+import { getTranslations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const SuccessPage = () => {
   const router = useRouter();
+  const { language } = useLanguage();
+  const t = getTranslations(language).auth.success;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-purple-50/80 to-purple-100/50 relative overflow-hidden">
@@ -25,11 +29,11 @@ const SuccessPage = () => {
             </div>
             
             <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-br from-gray-900 to-gray-700 text-transparent bg-clip-text mb-6">
-              Thank You for Signing Up!
+              {t.title}
             </h1>
             
             <p className="text-xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed">
-              We've received your information and will be in touch soon.
+              {t.description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -43,13 +47,13 @@ const SuccessPage = () => {
               >
                 <div className="px-8 py-4 flex items-center justify-center gap-2">
                   <Sparkles className="w-5 h-5" />
-                  <span className="text-lg font-semibold">Return to Home</span>
+                  <span className="text-lg font-semibold">{t.returnHome}</span>
                 </div>
               </MovingBorderButton>
             </div>
             
             <p className="mt-12 text-sm text-gray-500">
-              If you have any questions, feel free to reach out to us at{' '}
+              {t.contact}{' '}
               <a href="mailto:hello@findre.co" className="text-primary hover:underline">
                 hello@findre.co
               </a>

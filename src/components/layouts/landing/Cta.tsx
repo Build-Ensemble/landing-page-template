@@ -14,19 +14,22 @@ import { Rating } from "@/components/layouts/landing/rating"
 import { MovingBorderButton } from '@/components/ui/moving-border';
 import { SparklesIcon } from "lucide-react"
 import { BadgeCheck } from "lucide-react"
+import { getTranslations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Cta = ({
   className,
   signUp,
   getDemo,
-
 }: {
   className: string;
   signUp: () => void;
   getDemo: () => void;
-
 }) => {
   const router = useRouter();
+  const { language } = useLanguage();
+  const t = getTranslations(language).cta;
+
   return (
     <section className={cn(
       "max-w-6xl mx-auto bg-gradient-to-b from-purple-50/80 to-purple-100/50 text-white py-24 px-8 rounded-3xl shadow-[0_0_50px_-12px] shadow-purple-500/20 z-20 relative overflow-hidden",
@@ -44,10 +47,10 @@ export const Cta = ({
             <div className="flex flex-col gap-6">
               <CardHeader className="p-0">
                 <CardTitle className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-white via-white to-white/90 text-transparent bg-clip-text select-text">
-                  Ready to Up Your Prospecting Game?
+                  {t.title}
                 </CardTitle>
               </CardHeader>
-              <p className="text-white/80 text-lg">Supercharge your prospecting with targeted owner insights.</p>
+              <p className="text-white/80 text-lg">{t.subtitle}</p>
             </div>
 
             {/* Right Column - Buttons */}
@@ -64,11 +67,11 @@ export const Cta = ({
                   <div className="px-10 py-6 flex items-center w-full justify-center gap-2">
                     <SparklesIcon className="mr-3" size={22} strokeWidth={2.5} />
                     <span className="text-xl font-semibold tracking-wide">
-                      Sign up
+                      {t.signUp.text}
                     </span>
                     <span className="text-sm font-bold ml-1.5 opacity-80">
                       {' '}
-                      - it's free
+                      - {t.signUp.free}
                     </span>
                   </div>
                 </MovingBorderButton>
@@ -79,10 +82,10 @@ export const Cta = ({
                   onClick={getDemo}
                 >
                   <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
-                  <p>Book a Demo</p>
+                  <p>{t.demo.text}</p>
                 </Button>
               </div>
-              <p className="text-sm text-white/80 select-text font-medium text-center">No credit card required • 14-day free trial</p>
+              <p className="text-sm text-white/80 select-text font-medium text-center">{t.footer}</p>
             </div>
           </div>
         </Card>

@@ -1,0 +1,176 @@
+{
+  "hero": {
+    "title": "Soyez le premier à contacter les propriétaires de biens en difficulté",
+    "subtitle": "Conçu pour les courtiers et les investisseurs qui gagnent en étant les premiers. Filtrez les actifs multifamiliaux selon les signaux de propriété et connectez-vous directement avec les décideurs — avant que le marché ne voie l'affaire.",
+    "signUp": {
+      "text": "S'inscrire",
+      "free": "c'est gratuit"
+    },
+    "demo": {
+      "text": "Obtenir une consultation GRATUITE"
+    }
+  },
+  "problemStatement": {
+    "title": "Vous avez du mal à trouver les propriétaires ?",
+    "intro": {
+      "firstPart": "Vous n'êtes pas seul.",
+      "secondPart": "Les investisseurs immobiliers et les équipes d'acquisition perdent d'innombrables heures à chercher dans les registres publics, à faire des appels à froid et à traquer les informations sur la propriété.",
+      "thirdPart": "C'est chronophage, frustrant et inefficace",
+      "fourthPart": "— et surtout, cela vous fait perdre des affaires précieuses."
+    },
+    "painPoints": {
+      "research": {
+        "icon": "🔍",
+        "text": "Heures passées\nà rechercher les propriétaires"
+      },
+      "calls": {
+        "icon": "📞",
+        "text": "Appels sans issue\n& mauvais contacts"
+      },
+      "opportunities": {
+        "icon": "💸",
+        "text": "Opportunités manquées\nau profit des concurrents"
+      }
+    },
+    "solution": {
+      "title": "Une meilleure solution :",
+      "subtitle": "Findre vous donne un accès direct aux propriétaires vérifiés.",
+      "description": {
+        "firstPart": "Plus de temps perdu avec des dossiers obsolètes ou des appels à froid.",
+        "secondPart": "Accédez aux informations précises sur les propriétaires, leurs coordonnées et les informations sur les biens",
+        "thirdPart": "— le tout au même endroit, instantanément."
+      }
+    },
+    "cta": "Obtenez votre liste aujourd'hui"
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin pour trouver les propriétaires",
+    "description": "Notre plateforme combine des données puissantes avec des outils intuitifs pour vous aider à identifier et à contacter les propriétaires plus rapidement que jamais.",
+    "items": [
+      {
+        "title": "Identifiez les propriétaires",
+        "description": "Découvrez qui possède chaque propriété commerciale, qu'il s'agisse d'un particulier ou d'une entreprise."
+      },
+      {
+        "title": "Contacts fiables",
+        "description": "Accédez à des coordonnées vérifiées et identifiez les vendeurs motivés grâce aux signaux de propriété."
+      },
+      {
+        "title": "Opportunités hors marché",
+        "description": "Repérez les propriétés susceptibles d'être vendues avant qu'elles n'arrivent sur le marché."
+      },
+      {
+        "title": "Alertes en temps réel",
+        "description": "Recevez des notifications lors de changements importants sur vos propriétés cibles."
+      },
+      {
+        "title": "Gain de temps",
+        "description": "Éliminez les recherches manuelles et concentrez-vous sur la conclusion des transactions."
+      },
+      {
+        "title": "Pour les professionnels",
+        "description": "Optimisé pour les courtiers et investisseurs qui recherchent efficacité et rapidité."
+      }
+    ]
+  },
+  "header": {
+    "language": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "items": [
+      {
+        "question": "Quelle est la précision des informations de contact des propriétaires ?",
+        "answer": "Nous recoupons plusieurs sources pour fournir des contacts vérifiés et enrichis — téléphone et email lorsque possible."
+      },
+      {
+        "question": "À qui s'adresse ce service ?",
+        "answer": "Aux courtiers et aux équipes d'acquisition qui se concentrent sur la conclusion de transactions hors marché"
+      },
+      {
+        "question": "Puis-je personnaliser par emplacement ou type de bien ?",
+        "answer": "Oui. Nous filtrons par arrondissement, nombre d'unités, événements récents, et plus encore."
+      },
+      {
+        "question": "Comment obtenez-vous mes informations sur le marché immobilier local ?",
+        "answer": "Nous utilisons une combinaison d'événements locaux, d'actualités et de tendances du marché pour vous fournir les informations les plus précises et à jour."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à améliorer votre prospection ?",
+    "subtitle": "Boostez votre prospection avec des informations ciblées sur les propriétaires.",
+    "signUp": {
+      "text": "S'inscrire",
+      "free": "c'est gratuit"
+    },
+    "demo": {
+      "text": "Réserver une démo"
+    },
+    "footer": "Aucune carte de crédit requise • Essai gratuit de 14 jours"
+  },
+  "footer": {
+    "connect": "Connectez-vous avec nous",
+    "company": "Entreprise",
+    "contact": "Contact",
+    "copyright": "© {year} Findre. Tous droits réservés."
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenue",
+      "description": "Entrez votre email pour vous connecter à votre compte",
+      "email": "Email",
+      "emailPlaceholder": "m@exemple.com",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "resetPassword": "Réinitialiser ici",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signUp": "S'inscrire",
+      "accountNotFound": "Compte non trouvé. Veuillez vous inscrire."
+    },
+    "signup": {
+      "title": "Créer un compte",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "Créer un compte",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter",
+      "seeInAction": "Recevez votre liste personnalisée",
+      "description": "Nous serions ravis de vous montrer comment Findre peut vous aider à trouver des transactions hors marché avant tout le monde.",
+      "emailRequired": "L'email est requis",
+      "invalidEmail": "Veuillez entrer une adresse email valide",
+      "invalidResponse": "Le serveur a renvoyé une réponse invalide",
+      "somethingWentWrong": "Quelque chose s'est mal passé",
+      "submitError": "Échec de l'envoi du formulaire. Veuillez réessayer.",
+      "emailPlaceholder": "Jean@Dupont.com",
+      "phone": "Numéro de téléphone",
+      "phonePlaceholder": "(123) 456-7890",
+      "propertySize": "Taille de propriété souhaitée",
+      "selectPropertySize": "Sélectionnez la taille de propriété",
+      "propertySize8": "8+ unités",
+      "propertySize20": "20+ unités",
+      "propertySize50": "50+ unités",
+      "propertySize100": "100+ unités",
+      "propertySizeOther": "Autre",
+      "location": "Localisation cible",
+      "locationPlaceholder": "ex. : Westmount, Brossard, Laval, ...",
+      "locationHelp": "Entrez la ville et la province, ou un quartier spécifique",
+      "additionalDetails": "Détails supplémentaires (Optionnel)",
+      "detailsPlaceholder": "Dites-nous-en plus sur vos critères de recherche de propriété.",
+      "submitting": "Envoi en cours...",
+      "getStarted": "Commencer"
+    },
+    "success": {
+      "title": "Merci pour votre inscription !",
+      "description": "Nous avons reçu vos informations et vous contacterons bientôt.",
+      "returnHome": "Retour à l'accueil",
+      "contact": "Si vous avez des questions, n'hésitez pas à nous contacter :"
+    }
+  }
+} 

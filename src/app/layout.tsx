@@ -2,6 +2,16 @@ import '@/app/globals.css';
 import { Toaster } from 'sonner';
 import Script from 'next/script';
 import { PostHogProvider } from './providers';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Findre - Property Owner Sourcing',
+  description: 'Find and connect with property owners efficiently',
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -30,11 +40,17 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           `}
         </Script>
       </head>
-      <body>
-        <PostHogProvider>
-          <Toaster />
-          {children}
-        </PostHogProvider>
+      <body className={inter.className}>
+        <LanguageProvider>
+          <div className="min-h-screen">
+            <main className="pt-16">
+              <PostHogProvider>
+                <Toaster />
+                {children}
+              </PostHogProvider>
+            </main>
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );

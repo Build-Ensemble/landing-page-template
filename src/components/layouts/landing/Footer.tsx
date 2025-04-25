@@ -1,6 +1,14 @@
+'use client';
+
 import { Icons } from '@/components/icons';
-import { Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Linkedin, Twitter } from 'lucide-react';
+import { getTranslations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
+
 export const Footer = ({ className }: { className?: string }) => {
+  const { language } = useLanguage();
+  const t = getTranslations(language).footer;
+
   return (
     <footer id="footer" className={className}>
       <hr className="w-11/12 mx-auto" />
@@ -21,7 +29,7 @@ export const Footer = ({ className }: { className?: string }) => {
           <div className="hidden xl:block xl:col-span-2"></div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="font-bold text-lg mb-2">Connect With Us</h3>
+            <h3 className="font-bold text-lg mb-2">{t.connect}</h3>
             <a
               rel="noreferrer noopener"
               href="https://www.linkedin.com/company/goFindre/"
@@ -31,16 +39,26 @@ export const Footer = ({ className }: { className?: string }) => {
               <Linkedin className="w-5 h-5" />
               LinkedIn
             </a>
+            <a
+              rel="noreferrer noopener"
+              href="https://www.facebook.com/profile.php?id=61575314801168"
+              target="_blank"
+              className="opacity-70 hover:opacity-100 transition-opacity flex items-center gap-2 text-sm hover:text-primary"
+            >
+              <Facebook className="w-5 h-5" />
+              Facebook
+            </a>
           </div>
+          
 
           <div className="flex flex-col gap-3">
-            <h3 className="font-bold text-lg mb-2">Company</h3>
+            <h3 className="font-bold text-lg mb-2">{t.company}</h3>
 
             <a
               href="mailto:hello@findre.co?subject=Findre%20inquiry"
               className="text-sm opacity-70 hover:opacity-100 hover:text-primary transition-opacity"
             >
-              Contact
+              {t.contact}
             </a>
           </div>
         </div>
@@ -48,7 +66,7 @@ export const Footer = ({ className }: { className?: string }) => {
 
       <section className="container pb-8 text-center">
         <p className="text-sm text-gray-500">
-          © {new Date().getFullYear()} Findre. All rights reserved.
+          {t.copyright.replace('{year}', new Date().getFullYear().toString())}
         </p>
       </section>
     </footer>

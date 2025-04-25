@@ -8,37 +8,22 @@ import FeaturesSection from '@/components/layouts/landing/Features';
 import AdvantagesSection from './AdvantagesSection';
 import Hero from './Hero';
 import { useState, useEffect, useRef } from 'react';
-import { FAQ } from "@/components/layouts/landing/FAQ";
+import FAQ from "@/components/layouts/landing/FAQ";
 import FBXViewer from './FBXViewer';
 import ProblemStatement from './ProblemStatement';
-
-const faqItems = [
-  {
-    question: "How accurate is the owner contact info?",
-    answer: "We cross-reference multiple sources to deliver verified, enriched contacts — phone + email where possible.",
-  },
-  {
-    question: "Who is this for?",
-    answer: "Brokers and acquisition teams focused on closing off-market deals",
-  },
-  {
-    question: "Can I customize by location or asset type?",
-    answer: "Yes. We filter by borough, number of units, recent events, and more.",
-  },
-  {
-    question: "How do you get my local real estate market insights?",
-    answer: "We use a combination of local events, news, and market trends to provide you with the most accurate and up-to-date insights.",
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Landing = () => {
   const router = useRouter();
-  const login = () => router.push('/login');
-  const signUp = () => router.push('/sign-up');
-  const pricing = () => router.push('/pricing');
+  const { language } = useLanguage();
+  
+  const login = () => router.push(`/login?lang=${language}`);
+  const signUp = () => router.push(`/sign-up?lang=${language}`);
+  const pricing = () => router.push(`/pricing?lang=${language}`);
   const getDemo = () => {
-    router.push('/demo');
+    router.push(`/demo?lang=${language}`);
   };
+  
   return (
     <div>
       {/* <div className="fixed w-[400px] md:w-screen top-12 z-10">
@@ -68,7 +53,7 @@ const Landing = () => {
       <Cta className="mt-20 mb-20 z-10" signUp={signUp} getDemo={getDemo} />
 
       <section id="faq">
-        <FAQ items={faqItems} className="z-20 relative" />
+        <FAQ className="z-20 relative" />
       </section>
 
       <Footer className="z-20 relative" />

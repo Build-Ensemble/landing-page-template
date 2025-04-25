@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -6,6 +8,8 @@ import {
   BadgeCheck,
   Clock,
 } from 'lucide-react';
+import { getTranslations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 import '@/app/globals.css';
 import { MovingBorderButton } from '@/components/ui/moving-border';
@@ -35,9 +39,10 @@ const HeroSection = ({
 }: {
   signUp: () => void;
   getDemo: () => void;
-
-  
 }) => {
+  const { language } = useLanguage();
+  const t = getTranslations(language).hero;
+
   return (
     <section className="relative pt-20 md:pt-40 pb-20 md:pb-40 overflow-visible bg-gradient-to-b from-accent to-white min-h-[60vh] flex items-center">
       {/* Background elements */}
@@ -48,19 +53,18 @@ const HeroSection = ({
         <div className="flex flex-col items-center text-center">
           {/* Main heading - much larger */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 max-w-4xl z-20 relative">
-          Get in Front of Distressed Property Owners Before Anyone Else
+            {t.title}
           </h1>
           
           {/* Subheading - centered */}
           <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto z-20 relative">
-          Built for brokers and investors who win by getting in first.
-Filter multifamily assets by ownership signals and connect directly with decision-makers—before the market sees the deal.
+            {t.subtitle}
           </p>
-                {/* Rating component - centered */}
+          
+          {/* Rating component - centered */}
           <div className="mb-4 z-20">
             <Rating avatars={avatars} className="mx-auto" />
           </div>
-          
           
           {/* Buttons - centered and larger */}
           <div className="flex flex-wrap gap-4 mb-6 justify-center items-center z-20">
@@ -75,11 +79,11 @@ Filter multifamily assets by ownership signals and connect directly with decisio
               <div className="px-10 py-6 flex items-center w-full justify-center gap-2">
                 <SparklesIcon className="mr-3" size={22} strokeWidth={2.5} />
                 <span className="text-xl font-semibold tracking-wide">
-                  Sign up
+                  {t.signUp.text}
                 </span>
                 <span className="text-sm font-bold ml-1.5 opacity-80">
                   {' '}
-                  - it's free
+                  - {t.signUp.free}
                 </span>
               </div>
             </MovingBorderButton>
@@ -88,14 +92,12 @@ Filter multifamily assets by ownership signals and connect directly with decisio
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-white px-10 py-7 text-xl z-20"
               onClick={getDemo}
-
             >
               <BadgeCheck className="mr-3" size={24} strokeWidth={3} />{' '}
-              <p>Get a FREE consultation</p>
+              <p>{t.demo.text}</p>
             </Button>
           </div>
           
-
           {/* Feature bullets - centered */}
           <div className="flex flex-col md:flex-row gap-6 justify-center z-20">
             <div className="flex items-center">
